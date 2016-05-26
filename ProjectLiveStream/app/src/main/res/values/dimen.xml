@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="base_layout_header_height">50dp</dimen>
+    <dimen name="base_layout_header_icon_size">40dp</dimen>
+    <dimen name="base_layout_header_content_margin_left">7dp</dimen>
+    <dimen name="base_layout_header_text_size">19sp</dimen>
+    
+    <!-- List Competitions -->
+    <dimen name="list_competitions_min_height">50dp</dimen>
+    <dimen name="list_competitions_logo_size">45dp</dimen>
+    <dimen name="list_competitions_league_name_text_size">18sp</dimen>
+    <dimen name="list_competitions_description_text_size">14sp</dimen>
+    
+    <!-- Base List Item Compact -->
+    <dimen name="base_list_compact_title_text_size">13sp</dimen>
+    <dimen name="base_list_compact_bar_separator_height">1dp</dimen>
+    <dimen name="base_list_compact_top_bottom_margin">5dp</dimen>
+    <dimen name="base_list_compact_margin_sides">7dp</dimen>
+    
+    <!-- List Match Item -->
+    <dimen name="list_match_item_min_height">@dimen/list_competitions_min_height</dimen>
+    <dimen name="list_match_item_logo_size">30dp</dimen>
+    <dimen name="list_match_item_name_team_size">14sp</dimen>
+    <dimen name="list_match_item_result_text_size">14sp</dimen>
+    <dimen name="list_match_item_icon_highlights_size">20dp</dimen>
+    <dimen name="list_match_item_margin_top_bottom">5dp</dimen>
+    <dimen name="list_match_item_result_min_width">20dp</dimen>
+    <dimen name="list_match_item_youtube_icon_width">20dp</dimen>
+    
+    <!-- Match Details -->
+    <dimen name="match_details_team_logo_size">45dp</dimen>
+    <dimen name="match_details_player_score_text_size">12sp</dimen>
+    
+    <!-- Stream Item -->
+    <dimen name="match_details_stream_item_title_text_size">14sp</dimen>
+    <dimen name="match_details_stream_item_subtitle_text_size">12sp</dimen>
+    
+    <!-- Popup -->
+    <dimen name="popup_width">250dp</dimen>
+    <dimen name="popup_min_height">350dp</dimen>
+    <dimen name="popup_title_size">13sp</dimen>
+    <dimen name="popup_description">14sp</dimen>
+    <dimen name="popup_button_height">25dp</dimen>
+    <dimen name="popup_button_padding">5dp</dimen>
+    
+</resources>

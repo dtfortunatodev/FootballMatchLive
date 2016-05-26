@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_selector"
+    android:minHeight="@dimen/list_competitions_min_height" >
+
+    <ImageView
+        android:id="@+id/ivListMatchItemIsLive"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/live_icon"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/liatMatchItemInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="35dp"
+        android:layout_toRightOf="@+id/ivListMatchItemIsLive"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvListMatchItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/list_match_team_name"
+            android:textSize="@dimen/list_match_item_name_team_size" />
+
+        <TextView
+            android:id="@+id/tvListMatchItemDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/list_match_result_default"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameListMatchTopSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_list_compact_bar_separator_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/base_list_compact_bar_separator" >
+    </FrameLayout>
+
+</RelativeLayout>

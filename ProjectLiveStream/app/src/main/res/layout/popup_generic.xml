@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/popup_width"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvPopupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/popup_title"
+            android:textSize="@dimen/popup_title_size" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_list_compact_bar_separator_height"
+            android:layout_marginTop="2dp"
+            android:background="@color/base_list_compact_bar_separator" >
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvPopupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/popup_description"
+            android:textSize="@dimen/popup_description" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/base_list_compact_bar_separator_height"
+            android:background="@color/base_list_compact_bar_separator" >
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp" >
+
+            <Button
+                android:id="@+id/btnPopupConfirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/popup_button_height"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_confirm_selector"
+                android:paddingLeft="@dimen/popup_button_padding"
+                android:paddingRight="@dimen/popup_button_padding"
+                android:text="Button"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnPopupCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/popup_button_height"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_cancel_selector"
+                android:paddingLeft="@dimen/popup_button_padding"
+                android:paddingRight="@dimen/popup_button_padding"
+                android:text="Button"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

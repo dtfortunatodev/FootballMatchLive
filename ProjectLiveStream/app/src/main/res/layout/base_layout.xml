@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c8e6c9">
+
+    <RelativeLayout
+        android:id="@+id/layoutBaseLayoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_layout_header_height"
+        android:background="@color/base_bg_color">
+
+        <LinearLayout
+            android:id="@+id/layoutHeaderContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/base_layout_header_content_margin_left"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/layoutBaseHeaderButtonsContainer"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ivHeaderIcon"
+                android:layout_width="@dimen/base_layout_header_icon_size"
+                android:layout_height="@dimen/base_layout_header_icon_size"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tvHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/base_layout_header_content_margin_left"
+                android:layout_marginRight="7dp"
+                android:text="@string/app_name"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/base_header_title"
+                android:textSize="@dimen/base_layout_header_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutBaseHeaderButtonsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/ivHeaderFavoriteToggle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/item_bg_blue"
+                android:clickable="true"
+                android:src="@drawable/favorite_white_star_uncheck"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivHeaderOtherSportsToggle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/item_bg_blue"
+                android:clickable="true"
+                android:src="@drawable/other_sports_icon"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivHeaderRefreshBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/item_bg_blue"
+                android:clickable="true"
+                android:src="@drawable/refresh_icon" />
+
+            <ImageView
+                android:id="@+id/ivHeaderShareBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="7dp"
+                android:background="@drawable/item_bg_blue"
+                android:clickable="true"
+                android:src="@drawable/share_icon" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutBaseLayoutHeader"
+        android:background="@drawable/shadow_to_repeat" >
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/adViewContainer"
+        android:layout_below="@+id/layoutBaseLayoutHeader"
+        android:layout_marginLeft="@dimen/base_layout_header_content_margin_left"
+        android:layout_marginRight="@dimen/base_layout_header_content_margin_left"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="20dp"
+        android:requiresFadingEdge="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/layoutBaseLayoutContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/adViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="false"
+        android:orientation="vertical" >
+
+        <com.appodeal.ads.BannerView
+            android:id="@+id/appodealBannerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

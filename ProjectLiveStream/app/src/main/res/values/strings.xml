@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Live Streaming</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!--<string name="app_id">313715956415</string>-->
+    <string name="progress_loading">Loading, please wait…</string>
+
+    <string name="list_competition_live_now">Live Now</string>
+    <string name="list_competition_next_match">Next match: </string>
+    
+    <!-- Streams Labels -->
+    <string name="list_streams_header_sopcast">Sopcast Streams</string>
+    <string name="list_stream_item_sopcast">Sopcast Stream</string>
+    <string name="list_streams_header_flash">Flash Streams</string>
+    <string name="list_stream_item_flash">Flash Stream</string>
+    <string name="list_streams_header_highlights">Youtube Highlights</string>
+    
+    <!-- Error Connection -->
+    <string name="popup_error_connection_title">Error connection</string>
+    <string name="popup_error_connection_description">Connection problems for unknown reasons were detected. Please try again.</string>
+    <string name="popup_error_connection_btn_confirmation">Try Again</string>
+    <string name="popup_error_connection_btn_cancel">Cancel</string>
+
+    <!-- Update App -->
+    <string name="popup_upadte_app_title">Upload App</string>
+    <string name="popup_update_app_description">We have a new version of our app. Please update it now to continue using our app.</string>
+    <string name="popup_update_app_btn_confirmation">Update</string>
+    <string name="popup_update_app_btn_cancel">Cancel</string>
+    
+    <!-- Flash Not Found -->
+    <string name="popup_flash_n_found_title">Flash not installed</string>
+    <string name="popup_flash_n_found_description">We noticed that you do not have "Flash Player" installed. Please install it before you start streaming.</string>
+    <string name="popup_flash_n_found_btn_confirm">Install</string>
+    <string name="popup_flash_n_found_btn_cancel">Cancel</string>
+
+    <!-- Flash Not Found -->
+    <string name="popup_mxplayer_n_found_title">MXPlayer not installed</string>
+    <string name="popup_mxplayer_n_found_description">We noticed that you do not have "MXPlayer" installed. Please install it to start streaming.</string>
+    <string name="popup_mxplayer_n_found_btn_confirm">Install</string>
+    <string name="popup_mxplayer_n_found_btn_cancel">Cancel</string>
+    
+    <!-- Sopcast Not Found -->
+    <string name="popup_sopcast_n_found_title">Sopcast not installed</string>
+    <string name="popup_sopcast_n_found_description">We noticed that you do not have "Sopcast" installed. Please install it before you start streaming.</string>
+    <string name="popup_sopcast_n_found_btn_confirm">Install</string>
+    <string name="popup_sopcast_n_found_btn_cancel">Cancel</string>
+    
+    <!-- Rate -->
+    <string name="popup_rate_title">Rate App</string>
+    <string name="popup_rate_description">We noticed that you liked our application. We\'d be grateful to receive your rate in Google Play.</string>
+    <string name="popup_rate_btn_confirm">Rate It</string>
+    <string name="popup_rate_btn_not_now">Not now</string>
+    <string name="popup_rate_btn_cancel">No thanks</string>
+    
+    <!-- Other Sport Item -->
+    <string name="other_sport_btn_install">Install</string>
+    <string name="other_sport_btn_open">Open</string>
+    
+</resources>

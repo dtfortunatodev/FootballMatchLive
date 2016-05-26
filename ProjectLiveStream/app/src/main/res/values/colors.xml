@@ -1,0 +1,35 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+
+    <!-- Base Colors -->
+    <color name="base_bg_color">#4caf50</color>
+    <!--<color name="base_bg_color">#0099CC</color>-->
+    <color name="base_header_title">#FFFFFF</color>
+    
+    <!-- Items -->
+    <color name="list_item_title">#666666</color>
+    <color name="list_item_desciption">#999999</color>
+    <color name="list_item_live_now">#B3C833</color>
+    
+    <!-- Base List Compact -->
+    <color name="base_list_compact_title">#999999</color>
+    <color name="base_list_compact_bar_separator">#E5E5E5</color>
+    
+    <!-- List Match item -->
+    <color name="list_match_team_name">#666666</color>
+    <color name="list_match_result_default">#999999</color>
+    <color name="list_match_live_now">#B3C833</color>
+    
+    <!-- Match Details -->
+    <color name="match_details_player_score">#999999</color>
+    
+    <!-- Match Details Stream Item -->
+    <color name="match_details_stream_item_title">#666666</color>
+    <color name="match_details_stream_item_subtitle">#999999</color>
+    
+    <!-- Popup -->
+    <color name="popup_title">#999999</color>
+    <color name="popup_description">#666666</color>
+    
+</resources>

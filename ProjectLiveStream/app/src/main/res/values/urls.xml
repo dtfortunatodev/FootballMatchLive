@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_startup_configs">https://www.dropbox.com/s/vebrvevdi56dcos/startupconfigs.json?raw=1</string>
+    <string name="url_other_sports">https://www.dropbox.com/s/fke32r1jqy3xgbc/otherssports.json?raw=1</string>
+    <string name="url_compact_ips">https://www.dropbox.com/s/0a7xm5ineyujkdd/compactips.json?raw=1</string>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:duplicateParentState="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_pop_up"
+        android:clickable="false"
+        android:duplicateParentState="true"
+        android:minHeight="@dimen/list_competitions_min_height" >
+
+        <LinearLayout
+            android:id="@+id/layoutListCompetitionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bg_item_selector"
+            android:clickable="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                android:id="@+id/ivListCompetitionsLogo"
+                android:layout_width="@dimen/list_competitions_logo_size"
+                android:layout_height="@dimen/list_competitions_logo_size"
+                android:layout_gravity="top|left" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tvListCompetitionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Liga Europa"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/list_item_title"
+                    android:textSize="@dimen/list_competitions_league_name_text_size" />
+
+                <TextView
+                    android:id="@+id/tvListCompetitionDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Live Now"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/list_item_desciption"
+                    android:textSize="@dimen/list_competitions_description_text_size" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
