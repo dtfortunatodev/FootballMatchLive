@@ -10,12 +10,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.formobile.projectlivestream.jsoup.JSoupHelper;
 import com.formobile.projectlivestream.ads.AdvertiseController;
+import com.formobile.projectlivestream.jsoup.JSoupHelper;
 import com.formobile.projectlivestream.utils.FullscreenableChromeClient;
 import com.formobile.projectlivestream.utils.ProgressController;
-import com.google.analytics.tracking.android.EasyTracker;
 
 public class WebPlayerActivity extends BaseActivity {
 
@@ -124,14 +122,14 @@ public class WebPlayerActivity extends BaseActivity {
 	protected void onStart() {
 		super.onStart();
 
-		EasyTracker.getInstance(this).activityStart(this);
+//		EasyTracker.getInstance(this).activityStart(this);
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
 		
-		EasyTracker.getInstance(this).activityStop(this);
+//		EasyTracker.getInstance(this).activityStop(this);
 	}
 
 	@SuppressLint("NewApi")

@@ -13,7 +13,6 @@ import com.formobile.projectlivestream.configs.AppConfigsHelper;
 import com.formobile.projectlivestream.interfaces.BaseActivityRefreshInterface;
 import com.formobile.projectlivestream.ads.AdvertiseController;
 import com.formobile.projectlivestream.utils.AnalyticsHelper;
-import com.google.analytics.tracking.android.EasyTracker;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -83,8 +82,7 @@ public class BaseSoccerLiveActivity extends BaseActivity{
 	@Override
 	protected void onStart() {
 		super.onStart();
-
-		EasyTracker.getInstance(this).activityStart(this);
+//		EasyTracker.getInstance(this).activityStart(this);
 	}
 
 
@@ -93,7 +91,7 @@ public class BaseSoccerLiveActivity extends BaseActivity{
 	protected void onStop() {
 		super.onStop();
 		
-		EasyTracker.getInstance(this).activityStop(this);
+//		EasyTracker.getInstance(this).activityStop(this);
 	}
 
 	private void configHeaderListeners(){

@@ -2,27 +2,18 @@ package com.formobile.projectlivestream;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.formobile.projectlivestream.configs.AppConfigsHelper;
 import com.formobile.projectlivestream.configs.StartupConfigs;
-import com.formobile.projectlivestream.entities.BackOfficeConfigsEntity;
 import com.formobile.projectlivestream.entities.PopupGenericEntity;
 import com.formobile.projectlivestream.interfaces.PopupGenericInterface;
 import com.formobile.projectlivestream.utils.AnalyticsHelper;
 import com.formobile.projectlivestream.utils.PopupController;
 import com.formobile.projectlivestream.utils.ProgressController;
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.MapBuilder;
-
 import java.io.IOException;
 
 /**
@@ -151,7 +142,7 @@ public class StartAppActivity extends Activity{
     protected void onStart() {
         super.onStart();
 
-        EasyTracker.getInstance(this).activityStart(this);
+//        EasyTracker.getInstance(this).activityStart(this);
     }
 
 
@@ -160,7 +151,7 @@ public class StartAppActivity extends Activity{
     protected void onStop() {
         super.onStop();
 
-        EasyTracker.getInstance(this).activityStop(this);
+//        EasyTracker.getInstance(this).activityStop(this);
     }
 
 

@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 /**
  * Created by David Fortunato on 26/05/2016
- * All rights reserved GoodBarber
  */
 public class BaseNavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
