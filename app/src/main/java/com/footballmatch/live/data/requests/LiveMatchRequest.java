@@ -46,7 +46,7 @@ public class LiveMatchRequest
                 responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_OK);
             } else
             {
-                // Response OK
+                // Response Failed
                 responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
             }
 
@@ -55,7 +55,7 @@ public class LiveMatchRequest
         {
             LogUtil.e(TAG, e.getMessage(), e);
 
-            // Response OK
+            // Response Falied
             responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
         }
 

@@ -16,7 +16,6 @@ public class MatchEntity implements Serializable
     private int resultTeamAway;
     private CompetitionEntity competitionEntity;
     private String linkUrl;
-    private StreamLinkEntity streamLinkEntity;
     private long startDateMillis;
     private long endDateMillis;
 
@@ -82,16 +81,6 @@ public class MatchEntity implements Serializable
     public void setLinkUrl(String linkUrl)
     {
         this.linkUrl = linkUrl;
-    }
-
-    public StreamLinkEntity getStreamLinkEntity()
-    {
-        return streamLinkEntity;
-    }
-
-    public void setStreamLinkEntity(StreamLinkEntity streamLinkEntity)
-    {
-        this.streamLinkEntity = streamLinkEntity;
     }
 
     public long getStartDateMillis()

@@ -2,6 +2,7 @@ package com.footballmatch.live.data.managers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import com.footballmatch.live.data.requests.StreamsMatchListRequest;
 import com.footballmatch.live.data.requests.LiveMatchRequest;
 import com.footballmatch.live.data.requests.ResponseDataObject;
 
@@ -16,6 +17,7 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
     private RequestType requestType;
     private Context context;
     private OnRequestListener onRequestListener;
+    private String requestUrl;
 
     public RequestAsyncTask(Context context, RequestType requestType, OnRequestListener onRequestListener)
     {
@@ -42,6 +44,8 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
         {
             case REQUEST_LIVE_MATCHES:
                 return (ResponseDataObject<T>) LiveMatchRequest.getListLiveMatches();
+            case REQUEST_LIST_STREAMS:
+                return (ResponseDataObject<T>) StreamsMatchListRequest.getListMatchStreams(requestUrl);
         }
 
         return null;
@@ -63,12 +67,18 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
         super.onPostExecute(responseDataObject);
     }
 
+    public RequestAsyncTask<T> setRequestUrl(String requestUrl)
+    {
+        this.requestUrl = requestUrl;
+        return this;
+    }
+
     /**
      * Types of requests that exists on the app
      */
     public enum RequestType
     {
-        REQUEST_LIVE_MATCHES;
+        REQUEST_LIVE_MATCHES, REQUEST_LIST_STREAMS;
     }
 
 
