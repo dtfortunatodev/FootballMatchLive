@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Created by David Fortunato on 18/07/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
 public class StreamsMatchListRequest
 {
@@ -29,7 +29,6 @@ public class StreamsMatchListRequest
     public static ResponseDataObject<StreamLinkEntity> getListMatchStreams(String url)
     {
         ResponseDataObject<StreamLinkEntity> responseDataObject = new ResponseDataObject();
-        List<StreamLinkEntity> listStreams = new ArrayList<>();
 
         // Load Document
         Document document = null;
@@ -80,14 +79,14 @@ public class StreamsMatchListRequest
         List<StreamLinkEntity> listStreams = new ArrayList<>();
 
         // Select Main Container
-        final String SELECT_CENTER_CONTAINER = "div.main > div.maincontent > div.content > div.single";
+        final String SELECT_CENTER_CONTAINER = "div#main div#maincontent div#content div.single";
         Elements elCenterContainer = document.select(SELECT_CENTER_CONTAINER);
 
         if (elCenterContainer != null)
         {
 
             // Get SopCast Streams
-            final String SELECT_SOPCAST_LIST = "div#sopcastlist > div.streamtable a.play";
+            final String SELECT_SOPCAST_LIST = "div#sopcastlist table.streamtable a.play";
             Elements elListSopcast = elCenterContainer.select(SELECT_SOPCAST_LIST);
 
             if (elListSopcast != null && !elListSopcast.isEmpty())
@@ -105,7 +104,7 @@ public class StreamsMatchListRequest
 
 
             // Get Other Streams
-            final String SELECT_OTHER_STREAMS_LIST = "div#livelist > div.streamtable a.play";
+            final String SELECT_OTHER_STREAMS_LIST = "div#livelist table.streamtable a.play";
             Elements elOtherStreams = elCenterContainer.select(SELECT_OTHER_STREAMS_LIST);
 
             if (elOtherStreams != null && !elOtherStreams.isEmpty())

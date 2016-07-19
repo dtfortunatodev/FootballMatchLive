@@ -8,7 +8,7 @@ import com.footballmatch.live.data.requests.ResponseDataObject;
 
 /**
  * Created by David Fortunato on 27/05/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
 public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, ResponseDataObject<T>>
 {
