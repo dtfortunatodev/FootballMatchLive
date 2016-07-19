@@ -5,11 +5,24 @@ import java.util.List;
 
 /**
  * Created by David Fortunato on 27/05/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
 public class GSONParser
 {
     private static Gson gsonClient;
+
+
+    /**
+     * Parse a JSON message to object
+     * @param jsonMessage Json mesage to parse
+     * @param objectClass Object type to convert
+     * @param <T> Type of class
+     * @return Generate object
+     */
+    public static <Type> Type parseJSONToObject(String jsonMessage, Class<Type> objectClass)
+    {
+        return getGsonInstance().fromJson(jsonMessage, objectClass);
+    }
 
     /**
      * Parse object to string

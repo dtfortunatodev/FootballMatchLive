@@ -1,12 +1,10 @@
 package com.footballmatch.live.data.model;
 
-import java.io.Serializable;
-
 /**
  * Created by David Fortunato on 27/05/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
-public class StreamLinkEntity implements Serializable
+public class StreamLinkEntity extends BaseEntity
 {
     private String streamLinkUrl;
     private StreamLinkType streamLinkType;
@@ -24,6 +22,34 @@ public class StreamLinkEntity implements Serializable
     public void setStreamLinkUrl(String streamLinkUrl)
     {
         this.streamLinkUrl = streamLinkUrl;
+
+        // Check wich type it is
+        if (streamLinkUrl != null)
+        {
+
+            if (streamLinkUrl.startsWith("sop"))
+            {
+                // Sopcast link
+                setStreamLinkType(StreamLinkType.SOPCAST);
+            }
+            else if (streamLinkUrl.startsWith("acestream"))
+            {
+                // Sopcast link
+                setStreamLinkType(StreamLinkType.ACESTREAM);
+            }
+            else if (streamLinkUrl.startsWith("http://arenavision.in"))
+            {
+                // ArenaVision Link
+                setStreamLinkType(StreamLinkType.ARENAVISION);
+            }
+            else
+            {
+                // WebPlayer. Open it in the
+                setStreamLinkType(StreamLinkType.WEBPLAYER);
+            }
+
+        }
+
     }
 
     public StreamLinkType getStreamLinkType()
@@ -41,6 +67,6 @@ public class StreamLinkEntity implements Serializable
      */
     public enum StreamLinkType
     {
-        WEBPLAYER, SOPCAST, ACESTREAM;
+        WEBPLAYER, SOPCAST, ACESTREAM, ARENAVISION;
     }
 }

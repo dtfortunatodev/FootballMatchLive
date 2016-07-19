@@ -1,12 +1,10 @@
 package com.footballmatch.live.data.model;
 
-import java.io.Serializable;
-
 /**
  * Created by David Fortunato on 27/05/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
-public class MatchEntity implements Serializable
+public class MatchEntity extends BaseEntity
 {
 
     // Data
@@ -16,7 +14,6 @@ public class MatchEntity implements Serializable
     private int resultTeamAway;
     private CompetitionEntity competitionEntity;
     private String linkUrl;
-    private StreamLinkEntity streamLinkEntity;
     private long startDateMillis;
     private long endDateMillis;
 
@@ -82,16 +79,6 @@ public class MatchEntity implements Serializable
     public void setLinkUrl(String linkUrl)
     {
         this.linkUrl = linkUrl;
-    }
-
-    public StreamLinkEntity getStreamLinkEntity()
-    {
-        return streamLinkEntity;
-    }
-
-    public void setStreamLinkEntity(StreamLinkEntity streamLinkEntity)
-    {
-        this.streamLinkEntity = streamLinkEntity;
     }
 
     public long getStartDateMillis()

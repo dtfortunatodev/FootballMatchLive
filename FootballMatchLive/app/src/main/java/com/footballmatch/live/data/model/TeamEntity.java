@@ -2,9 +2,9 @@ package com.footballmatch.live.data.model;
 
 /**
  * Created by David Fortunato on 27/05/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
-public class TeamEntity
+public class TeamEntity extends BaseEntity
 {
     private String teamName;
     private String teamLogoUrl;
