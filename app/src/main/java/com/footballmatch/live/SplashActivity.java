@@ -8,7 +8,7 @@ import com.footballmatch.live.data.model.settings.AppConfigs;
 
 /**
  * Created by David Fortunato on 19/07/2016
- * All rights reserved GoodBarber
+ * All rights reserved ForViews
  */
 public class SplashActivity extends Activity implements StartupManager.OnStartupInitCallback
 {
