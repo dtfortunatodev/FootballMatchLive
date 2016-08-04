@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutListMatchIndicatorContainer"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@color/list_item_background">
+
+        <ImageView
+            android:id="@+id/ivListMatchIndicatorTeamHomeLogo"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/tvListMatchIndicatorTeamHomeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/list_item_text_color"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivListMatchIndicatorTeamHomeLogo"
+            android:layout_toLeftOf="@+id/layoutListMatchIndicatorTimeContainer"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:text="TEAM HOME" />
+        
+        <FrameLayout
+            android:id="@+id/layoutListMatchIndicatorTimeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentBottom="false"
+            android:background="@drawable/list_match_indicator_time_background"
+            android:minHeight="38dp"
+            android:minWidth="65dp">
+
+            <TextView
+                android:id="@+id/tvListMatchIndicatorTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/list_item_highlight_text"
+                android:textSize="20sp"
+                android:layout_margin="5dp"
+                android:text=""
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvListMatchIndicatorTeamAwayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/list_item_text_color"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/ivListMatchIndicatorTeamAwayLogo"
+            android:layout_toRightOf="@+id/layoutListMatchIndicatorTimeContainer"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="TEAM AWAY" />
+
+        <ImageView
+            android:id="@+id/ivListMatchIndicatorTeamAwayLogo"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/layoutListItemSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/list_item_separator"
+        android:layout_gravity="bottom"/>
+
+</FrameLayout>

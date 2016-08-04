@@ -180,7 +180,7 @@ public class LiveMatchRequest
         if(DataUtils.isElementsValid(elements))
         {
             // Get Team Name
-            String teamName = elements.select("span").text();
+            String teamName = elements.select("span").first().text();
             String teamLogoUrl = elements.select("img").attr("src");
             teamHome.setTeamName(teamName);
             teamHome.setTeamLogoUrl(teamLogoUrl);
@@ -205,6 +205,8 @@ public class LiveMatchRequest
         if(DataUtils.isElementsValid(elements))
         {
             matchEntity.setLinkUrl(elements.attr("href"));
+
+            matchEntity.setLive(elements.hasClass("online"));
         }
 
         return matchEntity;

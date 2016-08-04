@@ -23,6 +23,16 @@ public class LogUtil
     }
 
     /**
+     * Custom log error
+     * @param tag
+     * @param message
+     */
+    public static void e(String tag, String message)
+    {
+        Log.d(tag, message);
+    }
+
+    /**
      * Custom log debug
      * @param tag
      * @param message
@@ -31,4 +41,6 @@ public class LogUtil
     {
         Log.d(tag, message);
     }
+
+
 }

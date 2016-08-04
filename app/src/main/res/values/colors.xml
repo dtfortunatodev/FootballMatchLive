@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#081621</color>
+    <color name="colorPrimaryDark">#080A0B</color>
+    <color name="colorAccent">#19CAFF</color>
+    <color name="appBackground">#21282D</color>
+    <color name="list_item_separator">@color/appBackground</color>
+    <color name="list_item_background">#38414B</color>
+    <color name="list_item_highlight_text">@color/colorAccent</color>
+    <color name="list_item_alpha_highlight_text">#B319CAFF</color>
+    <color name="list_item_text_color">#FFFFFF</color>
+
+    <!-- List Match Item -->
+    <color name="list_match_item_time">@color/colorAccent</color>
+    <color name="list_match_item_live">#4CAF50</color>
+
 </resources>

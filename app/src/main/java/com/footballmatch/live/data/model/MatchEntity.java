@@ -16,6 +16,7 @@ public class MatchEntity extends BaseEntity
     private String linkUrl;
     private long startDateMillis;
     private long endDateMillis;
+    private boolean isLive;
 
     public MatchEntity()
     {
@@ -99,5 +100,15 @@ public class MatchEntity extends BaseEntity
     public void setEndDateMillis(long endDateMillis)
     {
         this.endDateMillis = endDateMillis;
+    }
+
+    public boolean isLive()
+    {
+        return isLive;
+    }
+
+    public void setLive(boolean live)
+    {
+        isLive = live;
     }
 }

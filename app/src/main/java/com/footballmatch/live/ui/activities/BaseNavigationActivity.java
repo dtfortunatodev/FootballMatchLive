@@ -1,6 +1,7 @@
-package com.footballmatch.live;
+package com.footballmatch.live.ui.activities;
 
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,9 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import com.footballmatch.live.R;
 
 /**
  * Created by David Fortunato on 26/05/2016
@@ -19,17 +23,20 @@ public class BaseNavigationActivity extends AppCompatActivity implements Navigat
 {
 
     // Views
-    private NavigationView viewNavigationView;
-    private FloatingActionButton viewFloatingActionButton;
-    private Toolbar viewToolBar;
-    private ViewGroup viewBaseContainer; // This is the container to set the new data
-    private DrawerLayout viewDrawerLayout;
+    protected NavigationView viewNavigationView;
+    protected FloatingActionButton viewFloatingActionButton;
+    protected Toolbar viewToolBar;
+    protected ViewGroup viewBaseContainer; // This is the container to set the new data
+    protected DrawerLayout viewDrawerLayout;
 
+    // Flags
+    private boolean mAlreadyInitLayout = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        mAlreadyInitLayout = false;
         setContentView(R.layout.activity_main);
 
         // Find Views
@@ -50,6 +57,52 @@ public class BaseNavigationActivity extends AppCompatActivity implements Navigat
 
         // Setup Navigation View
         viewNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void setContentView(@LayoutRes int layoutResID)
+    {
+        if (!mAlreadyInitLayout)
+        {
+            super.setContentView(layoutResID);
+            mAlreadyInitLayout = true;
+        }
+        else
+        {
+            View inflatedView = LayoutInflater.from(getBaseContext()).inflate(layoutResID, null);
+            viewBaseContainer.removeAllViews();
+            viewBaseContainer.addView(inflatedView);
+        }
+    }
+
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params)
+    {
+        if (!mAlreadyInitLayout)
+        {
+            super.setContentView(view, params);
+            mAlreadyInitLayout = true;
+        }
+        else
+        {
+            viewBaseContainer.removeAllViews();
+            viewBaseContainer.addView(view);
+        }
+    }
+
+    @Override
+    public void setContentView(View view)
+    {
+        if (!mAlreadyInitLayout)
+        {
+            super.setContentView(view);
+            mAlreadyInitLayout = true;
+        }
+        else
+        {
+            viewBaseContainer.removeAllViews();
+            viewBaseContainer.addView(view);
+        }
     }
 
     @Override

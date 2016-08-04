@@ -27,7 +27,6 @@ public class StartupManager
     // Data
     private Context context;
     private AppConfigs appConfigs;
-    private boolean correctlyLoadedConfigs = false;
 
 
     private StartupManager(Context context)
@@ -125,7 +124,6 @@ public class StartupManager
                 // Update Prefs
                 if(loadedAppConfig != null)
                 {
-                    correctlyLoadedConfigs = true;
                     appConfigs = loadedAppConfig;
 
                     // Update Prefs

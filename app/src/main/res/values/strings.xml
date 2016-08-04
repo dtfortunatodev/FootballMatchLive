@@ -5,4 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <!-- Match Strings -->
+    <string name="list_match_is_live">LIVE</string>
+
 </resources>
