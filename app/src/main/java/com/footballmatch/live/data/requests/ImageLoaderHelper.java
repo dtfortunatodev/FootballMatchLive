@@ -31,11 +31,12 @@ public class ImageLoaderHelper
         {
             imageView.setImageDrawable(UiUtil.convertBase64ToBitmap(url));
         }
-        else
+        else if (!url.startsWith("http"))
         {
-            url = url.replace("/small/", "/big/");
-
             Picasso.with(imageView.getContext()).load(PREFIX_URL_IMAGE + url).placeholder(defaultDrawableRes).error(defaultDrawableRes).into(imageView);
+        } else
+        {
+            Picasso.with(imageView.getContext()).load(url).placeholder(defaultDrawableRes).error(defaultDrawableRes).into(imageView);
         }
     }
 

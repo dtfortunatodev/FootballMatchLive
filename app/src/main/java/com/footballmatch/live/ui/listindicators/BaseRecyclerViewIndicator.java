@@ -3,6 +3,7 @@ package com.footballmatch.live.ui.listindicators;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import com.footballmatch.live.data.model.BaseEntity;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
 
@@ -10,12 +11,19 @@ import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
  * Created by David Fortunato on 03/08/2016
  * All rights reserved GoodBarber
  */
-public abstract class BaseRecyclerViewIndicator<V extends View, ObjectData extends Object, ViewHolder extends BaseRecyclerViewHolder<V>>
+public abstract class BaseRecyclerViewIndicator<V extends View, ObjectData extends BaseEntity, ViewHolder extends BaseRecyclerViewHolder<V>>
 {
 
     // Data
     private int viewType = 0;
     private float viewWidth = 1;
+    private ObjectData objectData;
+
+
+    public BaseRecyclerViewIndicator(ObjectData objectData)
+    {
+        this.objectData = objectData;
+    }
 
     /**
      * Get view type identification (this view type should be sequential to use on adapter)
@@ -90,7 +98,10 @@ public abstract class BaseRecyclerViewIndicator<V extends View, ObjectData exten
      * the developer wants to override the List Indicator using the same data
      * @return Object data
      */
-    public abstract ObjectData getObjectData();
+    public ObjectData getObjectData()
+    {
+        return objectData;
+    }
 
     /**
      * Generated View Holder

@@ -8,10 +8,11 @@ public class StreamLinkEntity extends BaseEntity
 {
     private String streamLinkUrl;
     private StreamLinkType streamLinkType;
+    private boolean isRecommended;
 
     public StreamLinkEntity()
     {
-
+        this.isRecommended = false;
     }
 
     public String getStreamLinkUrl()
@@ -59,7 +60,21 @@ public class StreamLinkEntity extends BaseEntity
 
     public void setStreamLinkType(StreamLinkType streamLinkType)
     {
+        if (streamLinkType == StreamLinkType.ARENAVISION)
+        {
+            setRecommended(true);
+        }
         this.streamLinkType = streamLinkType;
+    }
+
+    public boolean isRecommended()
+    {
+        return isRecommended;
+    }
+
+    public void setRecommended(boolean recommended)
+    {
+        isRecommended = recommended;
     }
 
     /**

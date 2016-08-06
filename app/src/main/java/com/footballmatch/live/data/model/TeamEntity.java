@@ -32,5 +32,12 @@ public class TeamEntity extends BaseEntity
     public void setTeamLogoUrl(String teamLogoUrl)
     {
         this.teamLogoUrl = teamLogoUrl;
+
+        // Set Big URL
+        if (this.teamLogoUrl != null)
+        {
+            this.teamLogoUrl = this.teamLogoUrl.replace("/small/", "/big/");
+        }
+
     }
 }

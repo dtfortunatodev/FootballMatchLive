@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutListStreamItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_bg_black_selector">
+        
+        <ImageView
+            android:id="@+id/ivListStreamItemIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="7dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/tvListStreamItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_centerVertical="true"
+            android:gravity="left"
+            android:layout_toRightOf="@+id/ivListStreamItemIcon"
+            android:layout_toLeftOf="@+id/ivListStreamItemPlayIcon"/>
+
+        <ImageView
+            android:id="@+id/ivListStreamItemPlayIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="false"
+            android:src="@drawable/ic_play_icon"
+            android:layout_alignParentRight="true" />
+        
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/layoutListItemSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/list_item_separator"
+        android:layout_gravity="bottom"/>
+
+</FrameLayout>

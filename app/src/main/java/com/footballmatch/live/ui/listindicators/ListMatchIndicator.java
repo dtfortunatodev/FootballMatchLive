@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.footballmatch.live.R;
 import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.data.requests.ImageLoaderHelper;
+import com.footballmatch.live.ui.activities.MatchDetailsActivity;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
 import java.text.SimpleDateFormat;
@@ -29,7 +30,7 @@ public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEnt
 
     public ListMatchIndicator(MatchEntity matchEntity)
     {
-        this.matchEntity = matchEntity;
+        super(matchEntity);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEnt
     }
 
     @Override
-    public void refreshCell(RecyclerViewHolder recyclerViewHolder, BaseRecyclerViewAdapter adapter, int position, int columnPosition)
+    public void refreshCell(final RecyclerViewHolder recyclerViewHolder, BaseRecyclerViewAdapter adapter, int position, int columnPosition)
     {
         Resources resources = recyclerViewHolder.getContext().getResources();
 
@@ -60,12 +61,17 @@ public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEnt
         // Set Team Logos
         ImageLoaderHelper.loadImage(getObjectData().getTeamHome().getTeamLogoUrl(), recyclerViewHolder.ivTeamHomeLogo, R.drawable.team_generic_logo);
         ImageLoaderHelper.loadImage(getObjectData().getTeamAway().getTeamLogoUrl(), recyclerViewHolder.ivTeamAwayLogo, R.drawable.team_generic_logo);
-    }
 
-    @Override
-    public MatchEntity getObjectData()
-    {
-        return matchEntity;
+        // Set on Click
+        recyclerViewHolder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                MatchDetailsActivity.startActivity(recyclerViewHolder.getContext(), getObjectData());
+            }
+        });
+
     }
 
 

@@ -9,5 +9,6 @@
 
     <!-- List items Dimensions -->
     <dimen name="list_item_team_logo_height">40dp</dimen>
+    <dimen name="match_details_team_logo_size">60dp</dimen>
 
 </resources>

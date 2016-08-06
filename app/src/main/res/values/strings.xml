@@ -9,5 +9,7 @@
 
     <!-- Match Strings -->
     <string name="list_match_is_live">LIVE</string>
+    <string name="match_details_live_streams_separator">Live Streams Available:</string>
+    <string name="list_stream_indicator_recommended">(Recommended)</string>
 
 </resources>

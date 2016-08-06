@@ -6,6 +6,7 @@
     <color name="appBackground">#21282D</color>
     <color name="list_item_separator">@color/appBackground</color>
     <color name="list_item_background">#38414B</color>
+    <color name="list_item_background_selected">#6682C9ED</color>
     <color name="list_item_highlight_text">@color/colorAccent</color>
     <color name="list_item_alpha_highlight_text">#B319CAFF</color>
     <color name="list_item_text_color">#FFFFFF</color>

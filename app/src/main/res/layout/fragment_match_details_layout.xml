@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/layoutMatchDetailsHeaderContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="150dp">
+
+        <LinearLayout
+            android:id="@+id/layoutMatchDetailsTeamHomeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/layoutMatchDetailsTimeContainer"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/ivMatchDetailsTeamHomeLogo"
+                android:layout_width="@dimen/match_details_team_logo_size"
+                android:layout_height="@dimen/match_details_team_logo_size"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/tvMatchDetailsTeamHomeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutMatchDetailsTimeContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:padding="7dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvMatchDetailsDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#7F97AB"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/tvMatchDetailsTimeOrLive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:textColor="@color/list_match_item_time"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutMatchDetailsTeamAwayContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_alignParentLeft="false"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/layoutMatchDetailsTimeContainer">
+
+            <ImageView
+                android:id="@+id/ivMatchDetailsTeamAwayLogo"
+                android:layout_width="@dimen/match_details_team_logo_size"
+                android:layout_height="@dimen/match_details_team_logo_size"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/tvMatchDetailsTeamAwayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    
+    
+    <FrameLayout
+        android:id="@+id/frameMatchDetailsLiveStreamsSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#2E373E"
+        android:layout_below="@+id/layoutMatchDetailsHeaderContainer">
+
+        <TextView
+            android:id="@+id/tvMatchDetailsLiveStreamTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="25dp"
+            android:gravity="left"
+            android:text="@string/match_details_live_streams_separator"
+            android:textColor="#7F97AB"
+            android:layout_gravity="left|center_vertical" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameMatchDetailsLiveStreamsListContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.footballmatch.live.ui.views.BaseRecyclerView
+            android:id="@+id/viewRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
