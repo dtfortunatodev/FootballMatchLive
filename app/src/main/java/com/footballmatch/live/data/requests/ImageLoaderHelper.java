@@ -1,7 +1,9 @@
 package com.footballmatch.live.data.requests;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import com.footballmatch.live.data.utils.UiUtil;
+import com.footballmatch.live.R;
+import com.footballmatch.live.utils.UiUtil;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -22,10 +24,20 @@ public class ImageLoaderHelper
      */
     public static void loadImage(String url, ImageView imageView, int defaultDrawableRes)
     {
-        imageView.setImageDrawable(imageView.getResources().getDrawable(defaultDrawableRes));
+        Drawable defaultDrawable = null;
+        if (defaultDrawableRes != 0)
+        {
+            defaultDrawable = imageView.getResources().getDrawable(defaultDrawableRes);
+        }
+        else
+        {
+            defaultDrawable = imageView.getResources().getDrawable(R.drawable.invisible_drawable);
+        }
+        imageView.setImageDrawable(null);
+
         if (url == null)
         {
-            imageView.setImageDrawable(imageView.getResources().getDrawable(defaultDrawableRes));
+            imageView.setImageDrawable(defaultDrawable);
         }
         else if (url.startsWith("data"))
         {
@@ -33,10 +45,10 @@ public class ImageLoaderHelper
         }
         else if (!url.startsWith("http"))
         {
-            Picasso.with(imageView.getContext()).load(PREFIX_URL_IMAGE + url).placeholder(defaultDrawableRes).error(defaultDrawableRes).into(imageView);
+            Picasso.with(imageView.getContext()).load(PREFIX_URL_IMAGE + url).placeholder(R.drawable.invisible_drawable).error(defaultDrawableRes).into(imageView);
         } else
         {
-            Picasso.with(imageView.getContext()).load(url).placeholder(defaultDrawableRes).error(defaultDrawableRes).into(imageView);
+            Picasso.with(imageView.getContext()).load(url).placeholder(R.drawable.invisible_drawable).error(defaultDrawableRes).into(imageView);
         }
     }
 

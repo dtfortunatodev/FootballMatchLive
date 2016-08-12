@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.footballmatch.live.R;
+import com.footballmatch.live.managers.ads.AdsManager;
 
 /**
  * Created by David Fortunato on 26/05/2016
@@ -55,6 +56,10 @@ public class BaseNavigationActivity extends AppCompatActivity
                 finish();
             }
         });
+        viewToolBar.setLogo(R.mipmap.ic_launcher);
+
+        // Show Interstitial
+        AdsManager.getInstance(getBaseContext()).showInsterstitial(getBaseContext());
     }
 
 

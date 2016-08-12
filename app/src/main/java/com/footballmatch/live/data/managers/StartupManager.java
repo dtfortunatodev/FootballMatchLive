@@ -2,6 +2,7 @@ package com.footballmatch.live.data.managers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import com.footballmatch.live.data.model.settings.AdsConfigs;
 import com.footballmatch.live.data.model.settings.AppConfigs;
 import com.footballmatch.live.data.model.settings.IpCatchEntity;
 import com.footballmatch.live.utils.LogUtil;
@@ -97,7 +98,7 @@ public class StartupManager
                 try
                 {
                     Response response = HttpRequestManager.getInstance().getData(URL_APP_CONFIGS, null, null);
-                    if(response.isSuccessful())
+                    if(response != null && response.isSuccessful())
                     {
                         // Parse Body to AppConfigs
                         loadedAppConfig = GSONParser.parseJSONToObject(response.body().string(), AppConfigs.class);
@@ -140,6 +141,15 @@ public class StartupManager
 
     }
 
+    public AppConfigs getAppConfigs()
+    {
+        return appConfigs;
+    }
+
+    public AdsConfigs getAppAdsConfigs()
+    {
+        return getAppConfigs().getAdsConfigs();
+    }
 
     /**
      * Check if is able to run the app

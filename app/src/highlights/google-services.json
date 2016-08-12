@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "371787986077",
+    "firebase_url": "https://football-match-highlights.firebaseio.com",
+    "project_id": "football-match-highlights",
+    "storage_bucket": "football-match-highlights.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371787986077:android:dd24c08514118d9a",
+        "android_client_info": {
+          "package_name": "com.footballmatch.highlights"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371787986077-oussn44i0e5iiolar13kmj6itv8ica3a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.footballmatch.highlights",
+            "certificate_hash": "1F01FA4F4B91DD7CE638DB6BE57039D0E63A97B0"
+          }
+        },
+        {
+          "client_id": "371787986077-bnekf5kfuiggdo9me5aaj81bu51tc25b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6kmbHfj2Q4rSMj3cLumNS4UTaLMaXNuk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78410702-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371787986077-bnekf5kfuiggdo9me5aaj81bu51tc25b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

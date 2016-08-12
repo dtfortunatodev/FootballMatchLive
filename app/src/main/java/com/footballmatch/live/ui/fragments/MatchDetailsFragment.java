@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.footballmatch.live.R;
+import com.footballmatch.live.data.managers.NotificationsManager;
 import com.footballmatch.live.data.managers.RequestAsyncTask;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.data.model.StreamLinkEntity;
 import com.footballmatch.live.data.requests.ImageLoaderHelper;
@@ -43,6 +46,11 @@ public class MatchDetailsFragment extends BaseFragment
     private TextView  viewTvTime;
     private ImageView viewIvTeamHomeLogo;
     private ImageView viewIvTeamAwayLogo;
+    private TextView  viewTvStreamsNotAvailable;
+    private ViewGroup viewStreamsContainer;
+
+    private ImageView viewIvTeamHomeNotif;
+    private ImageView viewIvTeamAwayNotif;
 
     // Recycler Objects
     private MatchStreamLinksAdapter recyclerAdapter;
@@ -91,6 +99,10 @@ public class MatchDetailsFragment extends BaseFragment
             viewIvTeamHomeLogo = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamHomeLogo);
             viewIvTeamAwayLogo = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamAwayLogo);
             recyclerView = (BaseRecyclerView) viewContainer.findViewById(R.id.viewRecyclerView);
+            viewTvStreamsNotAvailable = (TextView) viewContainer.findViewById(R.id.tvMatchDetailsStreamsNotAvailable);
+            viewStreamsContainer = (ViewGroup) viewContainer.findViewById(R.id.layoutMatchDetailsStreamsContainer);
+            viewIvTeamHomeNotif = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamHomeNotif);
+            viewIvTeamAwayNotif = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamAwayNotif);
 
             // Init Recycler Adapter
             recyclerAdapter = new MatchStreamLinksAdapter(getContext());
@@ -123,7 +135,76 @@ public class MatchDetailsFragment extends BaseFragment
         // Load Data
         loadData();
 
+        // Process Block Screen
+        processBlockScreen();
+
+
+        // Set Listener on Click
+        if (StartupManager.getInstance(getContext()).getAppConfigs().isSubsNotificationEnabled())
+        {
+            viewIvTeamAwayNotif.setVisibility(View.VISIBLE);
+            viewIvTeamHomeNotif.setVisibility(View.VISIBLE);
+
+            viewIvTeamHomeNotif.setImageResource(NotificationsManager.getInstance(getContext()).isTeamRegistered(matchEntity.getTeamHome().getTeamName()) ? R.drawable.ic_notification_registered : R.drawable.ic_notification_unregistered);
+            viewIvTeamHomeNotif.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if (NotificationsManager.getInstance(getContext()).isTeamRegistered(matchEntity.getTeamHome().getTeamName()))
+                    {
+                        viewIvTeamHomeNotif.setImageResource(R.drawable.ic_notification_unregistered);
+                        NotificationsManager.getInstance(getContext()).unregisterTeam(matchEntity.getTeamHome().getTeamName());
+                    }
+                    else
+                    {
+                        viewIvTeamHomeNotif.setImageResource(R.drawable.ic_notification_registered);
+                        NotificationsManager.getInstance(getContext()).registerTeam(matchEntity.getTeamHome().getTeamName());
+                    }
+                }
+            });
+
+            // Set Listener on Click
+            viewIvTeamAwayNotif.setImageResource(NotificationsManager.getInstance(getContext()).isTeamRegistered(matchEntity.getTeamAway().getTeamName()) ? R.drawable.ic_notification_registered : R.drawable.ic_notification_unregistered);
+            viewIvTeamAwayNotif.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if (NotificationsManager.getInstance(getContext()).isTeamRegistered(matchEntity.getTeamAway().getTeamName()))
+                    {
+                        viewIvTeamAwayNotif.setImageResource(R.drawable.ic_notification_unregistered);
+                        NotificationsManager.getInstance(getContext()).unregisterTeam(matchEntity.getTeamAway().getTeamName());
+                    }
+                    else
+                    {
+                        viewIvTeamAwayNotif.setImageResource(R.drawable.ic_notification_registered);
+                        NotificationsManager.getInstance(getContext()).registerTeam(matchEntity.getTeamAway().getTeamName());
+                    }
+                }
+            });
+        } else
+        {
+            viewIvTeamAwayNotif.setVisibility(View.GONE);
+            viewIvTeamHomeNotif.setVisibility(View.GONE);
+        }
+
+
         return viewContainer;
+    }
+
+
+    /**
+     * Block Screen
+     */
+    private void processBlockScreen()
+    {
+        if (StartupManager.getInstance(getContext()).getAppConfigs().checkShouldBlockSensibleData())
+        {
+            viewIvTeamAwayLogo.setVisibility(View.GONE);
+            viewIvTeamHomeLogo.setVisibility(View.GONE);
+            viewStreamsContainer.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -149,6 +230,20 @@ public class MatchDetailsFragment extends BaseFragment
         if (responseDataObject.isOk())
         {
             recyclerAdapter.addListData(responseDataObject.getListObjectsResponse(), true);
+        } else
+        {
+            Toast.makeText(getContext(), R.string.error_loading_data, Toast.LENGTH_LONG).show();
+        }
+
+        // Check if is empty
+        if (recyclerAdapter.getItemCount() > 0)
+        {
+            recyclerView.setVisibility(View.VISIBLE);
+            viewTvStreamsNotAvailable.setVisibility(View.GONE);
+        } else
+        {
+            recyclerView.setVisibility(View.GONE);
+            viewTvStreamsNotAvailable.setVisibility(View.VISIBLE);
         }
     }
 

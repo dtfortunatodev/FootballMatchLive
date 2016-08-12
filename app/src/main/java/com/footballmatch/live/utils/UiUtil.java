@@ -1,4 +1,4 @@
-package com.footballmatch.live.data.utils;
+package com.footballmatch.live.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

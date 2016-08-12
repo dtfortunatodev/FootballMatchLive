@@ -10,8 +10,7 @@ public class MatchEntity extends BaseEntity
     // Data
     private TeamEntity teamHome;
     private TeamEntity teamAway;
-    private int resultTeamHome;
-    private int resultTeamAway;
+    private String score;
     private CompetitionEntity competitionEntity;
     private String linkUrl;
     private long startDateMillis;
@@ -40,26 +39,6 @@ public class MatchEntity extends BaseEntity
     public void setTeamAway(TeamEntity teamAway)
     {
         this.teamAway = teamAway;
-    }
-
-    public int getResultTeamHome()
-    {
-        return resultTeamHome;
-    }
-
-    public void setResultTeamHome(int resultTeamHome)
-    {
-        this.resultTeamHome = resultTeamHome;
-    }
-
-    public int getResultTeamAway()
-    {
-        return resultTeamAway;
-    }
-
-    public void setResultTeamAway(int resultTeamAway)
-    {
-        this.resultTeamAway = resultTeamAway;
     }
 
     public CompetitionEntity getCompetitionEntity()
@@ -110,5 +89,15 @@ public class MatchEntity extends BaseEntity
     public void setLive(boolean live)
     {
         isLive = live;
+    }
+
+    public String getScore()
+    {
+        return score;
+    }
+
+    public void setScore(String score)
+    {
+        this.score = score;
     }
 }

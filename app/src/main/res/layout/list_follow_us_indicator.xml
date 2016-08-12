@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/list_item_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/list_item_background">
+
+        <FrameLayout
+            android:id="@+id/frameListFollowFacebookContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/frameListFollowUsCentered">
+
+            <ImageView
+                android:id="@+id/ivListFollowFacebookButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_follow_us_button_height"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:src="@drawable/btn_follow_us_on_facebook_selector" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frameListFollowUsCentered"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <FrameLayout
+            android:id="@+id/frameListFollowTwitterContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/frameListFollowUsCentered">
+
+            <ImageView
+                android:id="@+id/ivListFollowTwitterButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_follow_us_button_height"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:clickable="true"
+                android:src="@drawable/btn_follow_us_on_twitter_selector" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/layoutListItemSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="@color/list_item_separator" />
+</FrameLayout>
+

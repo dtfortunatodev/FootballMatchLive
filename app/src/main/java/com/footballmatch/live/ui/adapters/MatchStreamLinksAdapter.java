@@ -1,8 +1,10 @@
 package com.footballmatch.live.ui.adapters;
 
 import android.content.Context;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.StreamLinkEntity;
 import com.footballmatch.live.ui.listindicators.BaseRecyclerViewIndicator;
+import com.footballmatch.live.ui.listindicators.ListAdNativeIndicator;
 import com.footballmatch.live.ui.listindicators.ListStreamItemIndicator;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,21 @@ public class MatchStreamLinksAdapter extends BaseRecyclerViewAdapter<StreamLinkE
     {
         List<BaseRecyclerViewIndicator> listIndicators = new ArrayList<>();
 
+        listIndicators.add(new ListAdNativeIndicator());
+        int counter = 0;
         for (StreamLinkEntity streamLinkEntity : listData)
         {
+            // Check if should add Bannter
+            if (counter == StartupManager.getInstance(mContext).getAppAdsConfigs().getListIntervalNativeBanner() &&
+                    StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+            {
+                listIndicators.add(new ListAdNativeIndicator());
+                counter = 0;
+            }
+
             listIndicators.add(new ListStreamItemIndicator(streamLinkEntity));
+
+            counter++;
         }
         addListIndicators(listIndicators, cleanListBefore);
 

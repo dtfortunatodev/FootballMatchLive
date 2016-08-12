@@ -8,6 +8,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -18,6 +20,22 @@ public class StreamsMatchListRequest
 {
     private static final String TAG = StreamsMatchListRequest.class.getSimpleName();
 
+    // Comparator Sort
+    private static final Comparator<StreamLinkEntity> STREAM_LIST_SORT = new Comparator<StreamLinkEntity>()
+    {
+        @Override
+        public int compare(StreamLinkEntity streamLinkEntity1, StreamLinkEntity streamLinkEntity2)
+        {
+            if (streamLinkEntity1.getStreamLinkType() == streamLinkEntity2.getStreamLinkType())
+            {
+                return 0;
+            }
+            else
+            {
+                return streamLinkEntity1.getStreamLinkType().getPriority() > streamLinkEntity2.getStreamLinkType().getPriority() ? 1 : -1;
+            }
+        }
+    };
 
     /**
      * Get List of Match Streams for the match of the URL
@@ -121,6 +139,9 @@ public class StreamsMatchListRequest
             }
 
         }
+
+        // Sort List
+        Collections.sort(listStreams, STREAM_LIST_SORT);
 
         return listStreams;
     }

@@ -8,8 +8,8 @@ android {
         applicationId "com.footballmatch.live"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.1.0"
     }
     buildTypes {
         release {
@@ -17,6 +17,48 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //  Product Flavors
+    productFlavors {
+        live {
+            applicationId "com.footballmatch.live"
+            minSdkVersion 14
+            targetSdkVersion 23
+            versionCode 5
+            versionName "1.1.0"
+        }
+
+        highlights {
+            applicationId "com.footballmatch.highlights"
+            minSdkVersion 14
+            targetSdkVersion 23
+            versionCode 5
+            versionName "1.1.0"
+        }
+    }
+
+    // Sources of Flavors
+    sourceSets {
+        live {
+            java {
+                srcDir 'src/live/java'
+            }
+            resources {
+                srcDir 'src/live/res'
+            }
+        }
+
+        highlights {
+            java {
+                srcDir 'src/highlights/java'
+            }
+            resources {
+                srcDir 'src/highlights/res'
+            }
+        }
+
+    }
+
 }
 
 dependencies {
@@ -28,17 +70,22 @@ dependencies {
 
 
     // Firebase Dependencies
-//    compile "com.google.firebase:firebase-ads:9.2.1"
-//    compile "com.google.firebase:firebase-messaging:9.2.1"
-//    compile 'com.google.firebase:firebase-database:9.2.1'
+    compile "com.google.firebase:firebase-invites:${rootProject.ext.firebaseVersion}"
+    compile "com.google.firebase:firebase-core:${rootProject.ext.firebaseVersion}"
+    compile "com.google.firebase:firebase-messaging:${rootProject.ext.firebaseVersion}"
 
     // Project Dependencies
-    compile 'com.google.android.gms:play-services-ads:9.0.0'
-    compile 'com.google.android.gms:play-services-analytics:9.0.0'
+    compile 'com.google.android.gms:play-services-ads:9.4.0'
+    compile 'com.google.android.gms:play-services-analytics:9.4.0'
+    compile 'com.google.android.gms:play-services-location:9.4.0'
+
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.okhttp3:okhttp:3.3.0'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Ads
+//    compile('com.avocarrot:android-sdk:3.7.+')
 }
 
 // ADD THIS AT THE BOTTOM

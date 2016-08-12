@@ -2,15 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/list_item_background">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Welcome to the Football Match Live App"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/original_footall_match_live_logo"
+        android:layout_gravity="center"/>
 
 </FrameLayout>

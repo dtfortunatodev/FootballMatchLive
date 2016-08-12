@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.footballmatch.live.R;
+import com.footballmatch.live.data.managers.PlayStreamManager;
 import com.footballmatch.live.data.model.StreamLinkEntity;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
@@ -34,7 +34,7 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
     }
 
     @Override
-    public void refreshCell(ListStreamIeamViewHolder recyclerViewHolder, BaseRecyclerViewAdapter adapter, int position, int columnPosition)
+    public void refreshCell(final ListStreamIeamViewHolder recyclerViewHolder, BaseRecyclerViewAdapter adapter, int position, int columnPosition)
     {
 
         // Setup Text
@@ -44,16 +44,16 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
             switch (getObjectData().getStreamLinkType())
             {
                 case WEBPLAYER:
-                    streamName = "Webplayer " + position + 1;
+                    streamName = "Webplayer " + (position + 1);
                     break;
                 case ACESTREAM:
-                    streamName = "Acestream " + position + 1;
+                    streamName = "Acestream " + (position + 1);
                     break;
                 case ARENAVISION:
-                    streamName = "AV " + position + 1;
+                    streamName = "AV " + (position + 1);
                     break;
                 case SOPCAST:
-                    streamName = "SopCast " + position + 1;
+                    streamName = "SopCast " + (position + 1);
                     break;
             }
 
@@ -86,7 +86,8 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(v.getContext(), "Clicked on stream " + streamName, Toast.LENGTH_SHORT).show();
+                // Start Stream
+                PlayStreamManager.playStreamManager(recyclerViewHolder.getContext(), getObjectData());
             }
         });
 

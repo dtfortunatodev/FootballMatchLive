@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.footballmatch.live.R;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.data.requests.ImageLoaderHelper;
 import com.footballmatch.live.ui.activities.MatchDetailsActivity;
@@ -20,7 +21,7 @@ import java.util.Date;
  * Created by David Fortunato on 04/08/2016
  * All rights reserved GoodBarber
  */
-public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEntity, ListMatchIndicator.RecyclerViewHolder>
+public class BaseListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEntity, BaseListMatchIndicator.RecyclerViewHolder>
 {
 
     private static final SimpleDateFormat MATCH_TIME_FORMAT = new SimpleDateFormat("HH:mm");
@@ -28,7 +29,7 @@ public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEnt
     // Data
     private MatchEntity matchEntity;
 
-    public ListMatchIndicator(MatchEntity matchEntity)
+    public BaseListMatchIndicator(MatchEntity matchEntity)
     {
         super(matchEntity);
     }
@@ -72,8 +73,19 @@ public class ListMatchIndicator extends BaseRecyclerViewIndicator<View, MatchEnt
             }
         });
 
+        // Process Block Screen
+        procressBlockScreen(recyclerViewHolder);
+
     }
 
+    private void procressBlockScreen(RecyclerViewHolder recyclerViewHolder)
+    {
+        if (StartupManager.getInstance(recyclerViewHolder.getContext()).getAppConfigs().checkShouldBlockSensibleData())
+        {
+            recyclerViewHolder.ivTeamHomeLogo.setVisibility(View.INVISIBLE);
+            recyclerViewHolder.ivTeamAwayLogo.setVisibility(View.INVISIBLE);
+        }
+    }
 
     @Override
     public RecyclerViewHolder getRecycleViewHolder(View view)

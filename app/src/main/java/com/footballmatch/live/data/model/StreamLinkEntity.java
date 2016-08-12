@@ -82,6 +82,23 @@ public class StreamLinkEntity extends BaseEntity
      */
     public enum StreamLinkType
     {
-        WEBPLAYER, SOPCAST, ACESTREAM, ARENAVISION;
+        SOPCAST(0), ACESTREAM(1), ARENAVISION(3), WEBPLAYER(4);
+
+        private int priority;
+
+        StreamLinkType(int priority)
+        {
+            this.priority = priority;
+        }
+
+        public int getPriority()
+        {
+            return priority;
+        }
+
+        public void setPriority(int priority)
+        {
+            this.priority = priority;
+        }
     }
 }

@@ -7,11 +7,10 @@
     <RelativeLayout
         android:id="@+id/layoutListMatchIndicatorContainer"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
+        android:layout_height="@dimen/list_item_match_height"
         android:background="@drawable/list_item_bg_selector"
-        android:duplicateParentState="true">
+        android:duplicateParentState="true"
+        android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/ivListMatchIndicatorTeamHomeLogo"

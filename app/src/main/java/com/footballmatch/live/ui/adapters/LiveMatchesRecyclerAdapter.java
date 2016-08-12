@@ -1,8 +1,12 @@
 package com.footballmatch.live.ui.adapters;
 
 import android.content.Context;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.ui.listindicators.BaseRecyclerViewIndicator;
+import com.footballmatch.live.ui.listindicators.ListAdInternalIndicator;
+import com.footballmatch.live.ui.listindicators.ListAdNativeIndicator;
+import com.footballmatch.live.ui.listindicators.ListCompetitionSeparatorIndicator;
 import com.footballmatch.live.ui.listindicators.ListMatchIndicator;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +17,7 @@ import java.util.List;
  */
 public class LiveMatchesRecyclerAdapter extends BaseRecyclerViewAdapter<MatchEntity>
 {
+
     public LiveMatchesRecyclerAdapter(Context activity)
     {
         super(activity);
@@ -21,13 +26,41 @@ public class LiveMatchesRecyclerAdapter extends BaseRecyclerViewAdapter<MatchEnt
     @Override
     public void addListData(List<MatchEntity> listData, boolean cleanListBefore)
     {
-        // FIXME Only to test
-        List<BaseRecyclerViewIndicator> listTestIndicators = new ArrayList<>();
+        List<BaseRecyclerViewIndicator> listIndicators = new ArrayList<>();
+        int counter = 0;
+
+        // Check if should add Ad Internal
+        if (StartupManager.getInstance(mContext).getAppConfigs().getInternalAds() != null &&
+                StartupManager.getInstance(mContext).getAppConfigs().getInternalAds().shouldDisplayAd(mContext))
+        {
+            listIndicators.add(new ListAdInternalIndicator(StartupManager.getInstance(mContext).getAppConfigs().getInternalAds()));
+        }
+
+        String currentCompetition = "";
         for (MatchEntity matchEntity : listData)
         {
-            listTestIndicators.add(new ListMatchIndicator(matchEntity));
+            // Check if is a net competition
+            if (matchEntity.getCompetitionEntity() != null && matchEntity.getCompetitionEntity().getCompetitionName() != null &&
+                    !currentCompetition.equalsIgnoreCase(matchEntity.getCompetitionEntity().getCompetitionLink()))
+            {
+                // Check if should add Banner before the Competition separator
+                if (counter >= StartupManager.getInstance(mContext).getAppAdsConfigs().getListIntervalNativeBanner() &&
+                        StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+                {
+                    listIndicators.add(new ListAdNativeIndicator());
+                    counter = 0;
+                }
+
+                listIndicators.add(new ListCompetitionSeparatorIndicator(matchEntity.getCompetitionEntity()));
+                currentCompetition = matchEntity.getCompetitionEntity().getCompetitionLink();
+            }
+
+            listIndicators.add(new ListMatchIndicator(matchEntity));
+
+
+            counter++;
         }
-        addListIndicators(listTestIndicators, cleanListBefore);
+        addListIndicators(listIndicators, cleanListBefore);
     }
 
     @Override

@@ -2,10 +2,8 @@ package com.footballmatch.live.ui.views;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.View;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.utils.LogUtil;
 
@@ -92,123 +90,123 @@ public class BaseRecyclerView extends RecyclerView
     {
         this.mSwipeHorizontalEffect = mSwipeHorizontalEffect;
     }
-
-    @Override
-    public boolean fling(int velocityX, int velocityY)
-    {
-
-        if (getSwipeHorizontalEffect() == SwipeHorizontalEffect.PAGER_EFFECT && getLayoutManager() instanceof LinearLayoutManager &&
-                ((LinearLayoutManager) getLayoutManager()).getOrientation() == HORIZONTAL)
-        {
-            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) getLayoutManager();
-
-            //            int viewWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-            int viewWidth = getWidth();
-
-            // views on the screen
-            int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
-            View lastView = linearLayoutManager.findViewByPosition(lastVisibleItemPosition);
-            int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
-            View firstView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition);
-
-            // Distance we need to scroll
-            int leftMargin = (viewWidth - lastView.getWidth()) / 2;
-            int rightMargin = (viewWidth - firstView.getWidth()) / 2 + firstView.getWidth();
-            int leftEdge = lastView.getLeft();
-            int rightEdge = firstView.getRight();
-            int scrollDistanceLeft = leftEdge - leftMargin;
-            int scrollDistanceRight = rightMargin - rightEdge;
-
-            if (Math.abs(velocityX) < 1000)
-            {
-                // It is slow, stay on the current page or go to the next page if more than half
-
-                if (leftEdge > viewWidth / 2)
-                {
-                    // go to next page
-                    smoothScrollBy(-scrollDistanceRight, 0);
-                }
-                else if (rightEdge < viewWidth / 2)
-                {
-                    // go to next page
-                    smoothScrollBy(scrollDistanceLeft, 0);
-                }
-                else
-                {
-                    // stay at current page
-                    if (velocityX > 0)
-                    {
-                        smoothScrollBy(-scrollDistanceRight, 0);
-                    }
-                    else
-                    {
-                        smoothScrollBy(scrollDistanceLeft, 0);
-                    }
-                }
-                return true;
-
-            }
-            else
-            {
-                // The fling is fast -> go to next page
-
-                if (velocityX > 0)
-                {
-                    smoothScrollBy(scrollDistanceLeft, 0);
-                }
-                else
-                {
-                    smoothScrollBy(-scrollDistanceRight, 0);
-                }
-                return true;
-
-            }
-        }
-
-        return super.fling(velocityX, velocityY);
-    }
-
-    @Override
-    public void onScrollStateChanged(int state)
-    {
-        super.onScrollStateChanged(state);
-
-        if (getSwipeHorizontalEffect() == SwipeHorizontalEffect.PAGER_EFFECT && getLayoutManager() instanceof LinearLayoutManager &&
-                ((LinearLayoutManager) getLayoutManager()).getOrientation() == HORIZONTAL)
-        {
-
-            if (state == SCROLL_STATE_IDLE)
-            {
-                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) getLayoutManager();
-                //                int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-                int screenWidth = getWidth();
-
-                // views on the screen
-                int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
-                View lastView = linearLayoutManager.findViewByPosition(lastVisibleItemPosition);
-                int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
-                View firstView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition);
-
-                // distance we need to scroll
-                int leftMargin = (screenWidth - lastView.getWidth()) / 2;
-                int rightMargin = (screenWidth - firstView.getWidth()) / 2 + firstView.getWidth();
-                int leftEdge = lastView.getLeft();
-                int rightEdge = firstView.getRight();
-                int scrollDistanceLeft = leftEdge - leftMargin;
-                int scrollDistanceRight = rightMargin - rightEdge;
-
-                if (leftEdge > screenWidth / 2)
-                {
-                    smoothScrollBy(-scrollDistanceRight, 0);
-                }
-                else if (rightEdge < screenWidth / 2)
-                {
-                    smoothScrollBy(scrollDistanceLeft, 0);
-                }
-            }
-
-        }
-    }
+//
+//    @Override
+//    public boolean fling(int velocityX, int velocityY)
+//    {
+//
+//        if (getSwipeHorizontalEffect() == SwipeHorizontalEffect.PAGER_EFFECT && getLayoutManager() instanceof LinearLayoutManager &&
+//                ((LinearLayoutManager) getLayoutManager()).getOrientation() == HORIZONTAL)
+//        {
+//            LinearLayoutManager linearLayoutManager = (LinearLayoutManager) getLayoutManager();
+//
+//            //            int viewWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+//            int viewWidth = getWidth();
+//
+//            // views on the screen
+//            int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
+//            View lastView = linearLayoutManager.findViewByPosition(lastVisibleItemPosition);
+//            int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+//            View firstView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition);
+//
+//            // Distance we need to scroll
+//            int leftMargin = (viewWidth - lastView.getWidth()) / 2;
+//            int rightMargin = (viewWidth - firstView.getWidth()) / 2 + firstView.getWidth();
+//            int leftEdge = lastView.getLeft();
+//            int rightEdge = firstView.getRight();
+//            int scrollDistanceLeft = leftEdge - leftMargin;
+//            int scrollDistanceRight = rightMargin - rightEdge;
+//
+//            if (Math.abs(velocityX) < 1000)
+//            {
+//                // It is slow, stay on the current page or go to the next page if more than half
+//
+//                if (leftEdge > viewWidth / 2)
+//                {
+//                    // go to next page
+//                    smoothScrollBy(-scrollDistanceRight, 0);
+//                }
+//                else if (rightEdge < viewWidth / 2)
+//                {
+//                    // go to next page
+//                    smoothScrollBy(scrollDistanceLeft, 0);
+//                }
+//                else
+//                {
+//                    // stay at current page
+//                    if (velocityX > 0)
+//                    {
+//                        smoothScrollBy(-scrollDistanceRight, 0);
+//                    }
+//                    else
+//                    {
+//                        smoothScrollBy(scrollDistanceLeft, 0);
+//                    }
+//                }
+//                return true;
+//
+//            }
+//            else
+//            {
+//                // The fling is fast -> go to next page
+//
+//                if (velocityX > 0)
+//                {
+//                    smoothScrollBy(scrollDistanceLeft, 0);
+//                }
+//                else
+//                {
+//                    smoothScrollBy(-scrollDistanceRight, 0);
+//                }
+//                return true;
+//
+//            }
+//        }
+//
+//        return super.fling(velocityX, velocityY);
+//    }
+//
+//    @Override
+//    public void onScrollStateChanged(int state)
+//    {
+//        super.onScrollStateChanged(state);
+//
+//        if (getSwipeHorizontalEffect() == SwipeHorizontalEffect.PAGER_EFFECT && getLayoutManager() instanceof LinearLayoutManager &&
+//                ((LinearLayoutManager) getLayoutManager()).getOrientation() == HORIZONTAL)
+//        {
+//
+//            if (state == SCROLL_STATE_IDLE)
+//            {
+//                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) getLayoutManager();
+//                //                int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+//                int screenWidth = getWidth();
+//
+//                // views on the screen
+//                int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();
+//                View lastView = linearLayoutManager.findViewByPosition(lastVisibleItemPosition);
+//                int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();
+//                View firstView = linearLayoutManager.findViewByPosition(firstVisibleItemPosition);
+//
+//                // distance we need to scroll
+//                int leftMargin = (screenWidth - lastView.getWidth()) / 2;
+//                int rightMargin = (screenWidth - firstView.getWidth()) / 2 + firstView.getWidth();
+//                int leftEdge = lastView.getLeft();
+//                int rightEdge = firstView.getRight();
+//                int scrollDistanceLeft = leftEdge - leftMargin;
+//                int scrollDistanceRight = rightMargin - rightEdge;
+//
+//                if (leftEdge > screenWidth / 2)
+//                {
+//                    smoothScrollBy(-scrollDistanceRight, 0);
+//                }
+//                else if (rightEdge < screenWidth / 2)
+//                {
+//                    smoothScrollBy(scrollDistanceLeft, 0);
+//                }
+//            }
+//
+//        }
+//    }
 
     public enum SwipeHorizontalEffect
     {

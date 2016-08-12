@@ -2,6 +2,7 @@ package com.footballmatch.live.data.managers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import com.footballmatch.live.data.requests.ArenaVisionGetLinkRequest;
 import com.footballmatch.live.data.requests.StreamsMatchListRequest;
 import com.footballmatch.live.data.requests.LiveMatchRequest;
 import com.footballmatch.live.data.requests.ResponseDataObject;
@@ -46,6 +47,18 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
                 return (ResponseDataObject<T>) LiveMatchRequest.getListLiveMatches();
             case REQUEST_LIST_STREAMS:
                 return (ResponseDataObject<T>) StreamsMatchListRequest.getListMatchStreams(requestUrl);
+            case REQUEST_ARENAVISION_LINK:
+                ResponseDataObject<String> responseDataObject = new ResponseDataObject<>();
+                responseDataObject.setObject( ArenaVisionGetLinkRequest.getArenaVisionLink(requestUrl));
+                if (responseDataObject.getObject() != null && !responseDataObject.getObject().isEmpty())
+                {
+                    responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_OK);
+                }
+                else
+                {
+                    responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
+                }
+                return (ResponseDataObject<T>) responseDataObject;
         }
 
         return null;
@@ -78,7 +91,7 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
      */
     public enum RequestType
     {
-        REQUEST_LIVE_MATCHES, REQUEST_LIST_STREAMS;
+        REQUEST_LIVE_MATCHES, REQUEST_LIST_STREAMS, REQUEST_ARENAVISION_LINK;
     }
 
 

@@ -36,4 +36,28 @@ public class SharedPreferencesManager
         return sharedPreferences.getString(key, defaultValue);
     }
 
+    public static void putIntValue(Context context, String key, int value)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putInt(key, value).commit();
+    }
+
+    public static int getIntValue(Context context, String key, int defaultValue)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(key, defaultValue);
+    }
+
+    public static void putLongValue(Context context, String key, long value)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        sharedPreferences.edit().putLong(key, value).commit();
+    }
+
+    public static long getLongValue(Context context, String key, long defaultValue)
+    {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getLong(key, defaultValue);
+    }
+
 }

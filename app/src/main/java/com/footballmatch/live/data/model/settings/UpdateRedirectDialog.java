@@ -1,5 +1,6 @@
 package com.footballmatch.live.data.model.settings;
 
+import com.footballmatch.live.BuildConfig;
 import com.footballmatch.live.data.model.BaseEntity;
 
 /**
@@ -49,4 +50,20 @@ public class UpdateRedirectDialog extends BaseEntity
     {
         this.updateLink = updateLink;
     }
+
+    public boolean isBlocked()
+    {
+        return BuildConfig.VERSION_CODE < minVersion;
+    }
+
+    public boolean isUpdateAvailable()
+    {
+        return BuildConfig.VERSION_CODE < currentVersion;
+    }
+
+    public boolean shouldDisplayDialog()
+    {
+        return (isBlocked() || isUpdateAvailable());
+    }
+
 }
