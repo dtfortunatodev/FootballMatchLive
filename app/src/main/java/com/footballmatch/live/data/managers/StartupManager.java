@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.footballmatch.live.data.model.settings.AdsConfigs;
 import com.footballmatch.live.data.model.settings.AppConfigs;
 import com.footballmatch.live.data.model.settings.IpCatchEntity;
+import com.footballmatch.live.data.requests.Urls;
 import com.footballmatch.live.utils.LogUtil;
 import java.io.IOException;
 import okhttp3.Response;
@@ -19,7 +20,7 @@ public class StartupManager
 
     // App Configs
     private static final String URL_GET_USER_IP = "http://ipinfo.io/json";
-    private static final String URL_APP_CONFIGS = "https://www.dropbox.com/s/dtkn0sef2atviuh/AppConfigs.json?raw=1";
+    private static final String URL_APP_CONFIGS = Urls.STARTUP_CONFIGS_URL;
     private static final String APP_CONFIGS_PREFS_KEY = StartupManager.class.getName() + ".APP_CONFIGS_PREFS_KEY";
 
     // Singleton Instance

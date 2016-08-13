@@ -3,6 +3,7 @@ package com.footballmatch.live.data.managers;
 import android.content.Context;
 import android.os.AsyncTask;
 import com.footballmatch.live.data.requests.ArenaVisionGetLinkRequest;
+import com.footballmatch.live.data.requests.MatchHighlightRequest;
 import com.footballmatch.live.data.requests.StreamsMatchListRequest;
 import com.footballmatch.live.data.requests.LiveMatchRequest;
 import com.footballmatch.live.data.requests.ResponseDataObject;
@@ -59,6 +60,8 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
                     responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
                 }
                 return (ResponseDataObject<T>) responseDataObject;
+            case REQUEST_MATCH_HIGHLIGHTS:
+                return (ResponseDataObject<T>) MatchHighlightRequest.getMatchHighlightLink(requestUrl);
         }
 
         return null;
@@ -91,7 +94,7 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
      */
     public enum RequestType
     {
-        REQUEST_LIVE_MATCHES, REQUEST_LIST_STREAMS, REQUEST_ARENAVISION_LINK;
+        REQUEST_LIVE_MATCHES, REQUEST_LIST_STREAMS, REQUEST_ARENAVISION_LINK, REQUEST_MATCH_HIGHLIGHTS;
     }
 
 

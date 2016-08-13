@@ -6,5 +6,6 @@ package com.footballmatch.live.data.requests;
 public class Urls
 {
     public static final String REQUEST_LIVE_MATCHES = "http://livefootballvideo.com/highlights";
+    public static final String STARTUP_CONFIGS_URL = "https://www.dropbox.com/s/cjwzab0bar48jaa/AppConfigs.json?raw=1";
 
 }

@@ -189,8 +189,17 @@ public class LiveMatchRequest
         if(DataUtils.isElementsValid(elements))
         {
             // Get Team Name
-            String teamName = elements.text();
-            String teamLogoUrl = elements.select("img").attr("src");
+            Element elTeam = null;
+            if (elements.size() == 2)
+            {
+                elTeam = elements.get(1);
+            }
+            else
+            {
+                elTeam = elements.first();
+            }
+            String teamName = elTeam.text();
+            String teamLogoUrl = elTeam.select("img").attr("src");
             teamAway.setTeamName(teamName);
             teamAway.setTeamLogoUrl(teamLogoUrl);
         }

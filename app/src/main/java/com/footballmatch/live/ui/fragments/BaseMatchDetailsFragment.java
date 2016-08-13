@@ -16,7 +16,7 @@ import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.data.model.StreamLinkEntity;
 import com.footballmatch.live.data.requests.ImageLoaderHelper;
 import com.footballmatch.live.data.requests.ResponseDataObject;
-import com.footballmatch.live.ui.adapters.MatchStreamLinksAdapter;
+import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.views.BaseRecyclerView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,53 +25,38 @@ import java.util.Date;
  * Created by David Fortunato on 05/08/2016
  * All rights reserved GoodBarber
  */
-public class MatchDetailsFragment extends BaseFragment
+public abstract class BaseMatchDetailsFragment extends BaseFragment
 {
 
     // Extras
-    private static final String EXTRA_MATCH_ENTITY_OBJ = "EXTRA_MATCH_ENTITY_OBJ";
+    protected static final String EXTRA_MATCH_ENTITY_OBJ = "EXTRA_MATCH_ENTITY_OBJ";
 
     // Date Formats
-    private static final SimpleDateFormat DATE_FORMAT      = new SimpleDateFormat("dd/MM");
-    private static final SimpleDateFormat TIME_DATE_FORMAT = new SimpleDateFormat("HH:mm");
+    protected static final SimpleDateFormat DATE_FORMAT      = new SimpleDateFormat("dd/MM");
+    protected static final SimpleDateFormat TIME_DATE_FORMAT = new SimpleDateFormat("HH:mm");
 
     // Data
-    private MatchEntity matchEntity;
+    protected MatchEntity matchEntity;
 
     // Views
-    private ViewGroup viewContainer;
-    private TextView  viewTvTeamHomeName;
-    private TextView  viewTvTeamAwayName;
-    private TextView  viewTvDate;
-    private TextView  viewTvTime;
-    private ImageView viewIvTeamHomeLogo;
-    private ImageView viewIvTeamAwayLogo;
-    private TextView  viewTvStreamsNotAvailable;
-    private ViewGroup viewStreamsContainer;
+    protected ViewGroup viewContainer;
+    protected TextView  viewTvTeamHomeName;
+    protected TextView  viewTvTeamAwayName;
+    protected TextView  viewTvDate;
+    protected TextView  viewTvTime;
+    protected ImageView viewIvTeamHomeLogo;
+    protected ImageView viewIvTeamAwayLogo;
+    protected TextView  viewTvStreamsNotAvailable;
+    protected ViewGroup viewStreamsContainer;
+    protected TextView  viewTvStreamListTitle;
 
-    private ImageView viewIvTeamHomeNotif;
-    private ImageView viewIvTeamAwayNotif;
+    protected ImageView viewIvTeamHomeNotif;
+    protected ImageView viewIvTeamAwayNotif;
 
     // Recycler Objects
-    private MatchStreamLinksAdapter recyclerAdapter;
-    private BaseRecyclerView        recyclerView;
+//    protected MatchStreamLinksAdapter recyclerAdapter;
+    protected BaseRecyclerView        recyclerView;
 
-    /**
-     * New Fragment Instance
-     *
-     * @param matchEntity
-     *
-     * @return
-     */
-    public static MatchDetailsFragment newInstance(MatchEntity matchEntity)
-    {
-        MatchDetailsFragment matchDetailsFragment = new MatchDetailsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(EXTRA_MATCH_ENTITY_OBJ, matchEntity);
-        matchDetailsFragment.setArguments(bundle);
-
-        return matchDetailsFragment;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
@@ -103,10 +88,10 @@ public class MatchDetailsFragment extends BaseFragment
             viewStreamsContainer = (ViewGroup) viewContainer.findViewById(R.id.layoutMatchDetailsStreamsContainer);
             viewIvTeamHomeNotif = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamHomeNotif);
             viewIvTeamAwayNotif = (ImageView) viewContainer.findViewById(R.id.ivMatchDetailsTeamAwayNotif);
+            viewTvStreamListTitle = (TextView) viewContainer.findViewById(R.id.tvMatchDetailsLiveStreamTitle);
 
             // Init Recycler Adapter
-            recyclerAdapter = new MatchStreamLinksAdapter(getContext());
-            recyclerView.setAdapter(recyclerAdapter);
+            recyclerView.setAdapter(getRecyclerAdapter());
         }
 
         // Setup UI
@@ -229,14 +214,14 @@ public class MatchDetailsFragment extends BaseFragment
         // Add Data to Adapter
         if (responseDataObject.isOk())
         {
-            recyclerAdapter.addListData(responseDataObject.getListObjectsResponse(), true);
+            getRecyclerAdapter().addListData(responseDataObject.getListObjectsResponse(), true);
         } else
         {
             Toast.makeText(getContext(), R.string.error_loading_data, Toast.LENGTH_LONG).show();
         }
 
         // Check if is empty
-        if (recyclerAdapter.getItemCount() > 0)
+        if (getRecyclerAdapter().getItemCount() > 0)
         {
             recyclerView.setVisibility(View.VISIBLE);
             viewTvStreamsNotAvailable.setVisibility(View.GONE);
@@ -247,5 +232,7 @@ public class MatchDetailsFragment extends BaseFragment
         }
     }
 
+
+    protected abstract BaseRecyclerViewAdapter getRecyclerAdapter();
 
 }

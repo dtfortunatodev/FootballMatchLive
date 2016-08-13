@@ -6,5 +6,7 @@
     <string name="share_base_url">https://s6gcp.app.goo.gl/</string>
     <string name="share_final_link">https://play.google.com/store/apps/details?id=com.footballmatch.live</string>
     <string name="url_scheme_base">fmlive://matchDetails?link=</string>
+    <string name="scheme">fmlive</string>
+    <string name="scheme_host">matchDetails</string>
 
 </resources>

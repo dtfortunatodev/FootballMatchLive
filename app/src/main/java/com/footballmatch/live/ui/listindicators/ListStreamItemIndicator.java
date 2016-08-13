@@ -99,7 +99,7 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
         return new ListStreamIeamViewHolder(view);
     }
 
-    public class ListStreamIeamViewHolder extends BaseRecyclerViewHolder<View>
+    protected class ListStreamIeamViewHolder extends BaseRecyclerViewHolder<View>
     {
         public ImageView ivIcon;
         public TextView tvStreamName;

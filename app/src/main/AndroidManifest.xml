@@ -53,8 +53,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="matchDetails"
-                    android:scheme="fmlive" />
+                    android:host="@string/scheme_host"
+                    android:scheme="@string/scheme" />
 
             </intent-filter>
 

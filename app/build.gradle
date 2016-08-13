@@ -28,8 +28,8 @@ android {
             versionName "1.1.0"
         }
 
-        highlights {
-            applicationId "com.footballmatch.highlights"
+        videohighlights {
+            applicationId "com.footballmatch.videohighlights"
             minSdkVersion 14
             targetSdkVersion 23
             versionCode 5
@@ -48,12 +48,12 @@ android {
             }
         }
 
-        highlights {
+        videohighlights {
             java {
-                srcDir 'src/highlights/java'
+                srcDir 'src/videohighlights/java'
             }
             resources {
-                srcDir 'src/highlights/res'
+                srcDir 'src/videohighlights/res'
             }
         }
 

@@ -28,7 +28,7 @@ public class ResponseDataObject<T>
      */
     public boolean isOk()
     {
-        return getResponseCode() > RESPONSE_CODE_NOT_MODIFYED;
+        return (getListObjectsResponse() != null && !getListObjectsResponse().isEmpty()) || getResponseCode() > RESPONSE_CODE_NOT_MODIFYED;
     }
 
     public List<T> getListObjectsResponse()
