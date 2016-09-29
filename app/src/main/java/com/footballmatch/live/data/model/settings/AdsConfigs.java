@@ -11,9 +11,11 @@ public class AdsConfigs extends BaseEntity
 {
     private boolean adsEnabled;
     private long intervalBetweenAds;
+    private long intervalBetweenAdsReward;
     private AdsManager.AdsType adType;
     private String adNativeUnitId;
     private String adInterstitialId;
+    private String adVideoReward;
     private int listIntervalNativeBanner;
     private int probabilityDisplayAds;
 
@@ -24,6 +26,7 @@ public class AdsConfigs extends BaseEntity
     {
         adsEnabled = true;
         intervalBetweenAds = 30000; // 30 seconds
+        intervalBetweenAdsReward = 86400000;
         listIntervalNativeBanner = 5;
         probabilityDisplayAds = 50;
     }
@@ -112,5 +115,25 @@ public class AdsConfigs extends BaseEntity
     public void setParentAppConfigs(AppConfigs parentAppConfigs)
     {
         this.parentAppConfigs = parentAppConfigs;
+    }
+
+    public String getAdVideoReward()
+    {
+        return adVideoReward;
+    }
+
+    public void setAdVideoReward(String adVideoReward)
+    {
+        this.adVideoReward = adVideoReward;
+    }
+
+    public long getIntervalBetweenAdsReward()
+    {
+        return intervalBetweenAdsReward;
+    }
+
+    public void setIntervalBetweenAdsReward(long intervalBetweenAdsReward)
+    {
+        this.intervalBetweenAdsReward = intervalBetweenAdsReward;
     }
 }

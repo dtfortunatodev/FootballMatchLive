@@ -10,7 +10,11 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.NativeExpressAdView;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -23,6 +27,8 @@ public class AdsManager
 
     // prefs
     private static final String PREFS_LAST_TIME_INTERSTITIAL_DISPLAYED = "PREFS_LAST_TIME_INTERSTITIAL_DISPLAYED";
+    private static final String PREFS_LAST_TIME_REWARDED_DISPLAYED     = "PREFS_LAST_TIME_REWARDED_DISPLAYED";
+
 
     // Test Device
     private static final String TEST_DEVICE_ID = "1EC9706F2EBA55D6C3FE89B489471888";
@@ -77,7 +83,84 @@ public class AdsManager
         return null;
     }
 
+    public void showAdRwardInterstitial(final Context context, final OnAdRewardCallback onAdRewardCallback)
+    {
+        if (adsConfigs.isAdsEnabled() && adsConfigs.getAdVideoReward() != null && !adsConfigs.getAdVideoReward().isEmpty() && onAdRewardCallback != null)
+        {
+            final RewardedVideoAd mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(context);
+            mRewardedVideoAd.loadAd(adsConfigs.getAdVideoReward(), new AdRequest.Builder().build());
+            mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener()
+            {
+                private boolean hasVideo = false;
+                private RewardItem rewardItem = null;
 
+                @Override
+                public void onRewardedVideoAdLoaded()
+                {
+                    hasVideo = true;
+                    mRewardedVideoAd.show();
+                }
+
+                @Override
+                public void onRewardedVideoAdOpened()
+                {
+                    onAdRewardCallback.onSuccessShouldContinue();
+                }
+
+                @Override
+                public void onRewardedVideoStarted()
+                {
+                    hasVideo = true;
+                }
+
+                @Override
+                public void onRewardedVideoAdClosed()
+                {
+                    if (hasVideo && rewardItem == null)
+                    {
+                        onAdRewardCallback.onFailedShouldStop();
+                    }
+                    else
+                    {
+                        onAdRewardCallback.onSuccessShouldContinue();
+                    }
+                }
+
+                @Override
+                public void onRewarded(RewardItem rewardItem)
+                {
+                    onAdRewardCallback.onSuccessShouldContinue();
+                    this.rewardItem = rewardItem;
+
+                    // Update Time
+                    updateAdRewardedTimestamp(context);
+                }
+
+                @Override
+                public void onRewardedVideoAdLeftApplication()
+                {
+
+                }
+
+                @Override
+                public void onRewardedVideoAdFailedToLoad(int i)
+                {
+                    if (hasVideo && rewardItem == null)
+                    {
+                        onAdRewardCallback.onFailedShouldStop();
+                    }
+                    else
+                    {
+                        onAdRewardCallback.onSuccessShouldContinue();
+                    }
+                }
+            });
+        }
+        else if (onAdRewardCallback != null)
+        {
+            onAdRewardCallback.onSuccessShouldContinue();
+        }
+    }
 
     public void showInsterstitial(final Context context)
     {
@@ -108,7 +191,7 @@ public class AdsManager
                             {
                                 super.onAdFailedToLoad(i);
                                 // Reset Last Time Displayed
-                                SharedPreferencesManager.putLongValue(context,PREFS_LAST_TIME_INTERSTITIAL_DISPLAYED, 0);
+                                SharedPreferencesManager.putLongValue(context, PREFS_LAST_TIME_INTERSTITIAL_DISPLAYED, 0);
                             }
 
                             @Override
@@ -163,6 +246,29 @@ public class AdsManager
             }
         }
         return false;
+    }
+
+    public void updateAdRewardedTimestamp(Context context)
+    {
+        // Update Last Time Displayed
+        SharedPreferencesManager.putLongValue(context, PREFS_LAST_TIME_REWARDED_DISPLAYED, Calendar.getInstance().getTimeInMillis());
+    }
+
+    public boolean checkShouldDisplayAdReward(Context context)
+    {
+        return adsConfigs.isAdsEnabled() && adsConfigs.getAdVideoReward() != null && !adsConfigs.getAdVideoReward().isEmpty() &&
+                (Calendar.getInstance().getTimeInMillis() - SharedPreferencesManager.getLongValue(context, PREFS_LAST_TIME_REWARDED_DISPLAYED, 0)) >
+                        adsConfigs.getIntervalBetweenAdsReward();
+    }
+
+
+    public interface OnAdRewardCallback
+    {
+
+        void onSuccessShouldContinue();
+
+        void onFailedShouldStop();
+
     }
 
     public enum AdsType

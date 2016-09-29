@@ -19,6 +19,7 @@ public class PlayStreamManager
     // Apps Packade
     private static final String SOPCAST_APP_PACKAGE = "org.sopcast.android";
 
+
     /**
      * Play the sream
      *

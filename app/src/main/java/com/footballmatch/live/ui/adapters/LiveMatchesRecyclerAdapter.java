@@ -36,6 +36,13 @@ public class LiveMatchesRecyclerAdapter extends BaseRecyclerViewAdapter<MatchEnt
             listIndicators.add(new ListAdInternalIndicator(StartupManager.getInstance(mContext).getAppConfigs().getInternalAds()));
         }
 
+        // Add first ad
+        // Check if should add Banner before the Competition separator
+        if (StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+        {
+            listIndicators.add(new ListAdNativeIndicator());
+        }
+
         String currentCompetition = "";
         for (MatchEntity matchEntity : listData)
         {

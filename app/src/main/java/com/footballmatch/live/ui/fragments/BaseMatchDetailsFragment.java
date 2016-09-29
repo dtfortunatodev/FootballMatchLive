@@ -232,7 +232,6 @@ public abstract class BaseMatchDetailsFragment extends BaseFragment
         }
     }
 
-
     protected abstract BaseRecyclerViewAdapter getRecyclerAdapter();
 
 }

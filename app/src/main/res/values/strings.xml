@@ -24,11 +24,12 @@
     <string name="error_getting_arenavision_stream">Something failed on getting the ArenaVision Stream. Please try another stream.</string>
     <string name="error_match_details_notfound">The match is not available.</string>
     <string name="error_loading_data">Something failed on loading data. Please check your connection and try again</string>
+    <string name="error_watch_ad_reward">You should watch our advertiser</string>
 
     <!-- Dialogs -->
     <string name="dialog_update_app_available">We have a new version available, do you want to update your app?</string>
     <string name="dialog_update_app_available_mandatory">We have a new version available and you should update your app to continue using our app. Please click on Update.</string>
     <string name="dialog_update_app_btn_left">No</string>
-    <string name="dialog_update_app_btn_right">Update</string>
+    <string name="dialog_update_app_btn_right">Update</string>"
 
 </resources>
