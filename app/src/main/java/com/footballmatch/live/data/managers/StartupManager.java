@@ -78,7 +78,7 @@ public class StartupManager
                 try
                 {
                     Response getIpResponse = HttpRequestManager.getInstance().getData(URL_GET_USER_IP, null, null);
-                    if(getIpResponse.isSuccessful())
+                    if(getIpResponse != null && getIpResponse.isSuccessful())
                     {
                         userIp = GSONParser.parseJSONToObject(getIpResponse.body().string(), IpCatchEntity.class);
 
@@ -87,7 +87,6 @@ public class StartupManager
                         {
                             appConfigs.setUserCurrentIp(userIp);
                         }
-
                     }
                 }
                 catch (IOException e)

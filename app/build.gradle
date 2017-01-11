@@ -20,12 +20,12 @@ android {
 
     //  Product Flavors
     productFlavors {
-        live {
-            applicationId "com.footballmatch.live"
+        live1016 {
+            applicationId "com.footballmatch.live1016"
             minSdkVersion 14
             targetSdkVersion 23
-            versionCode 9
-            versionName "1.1.2"
+            versionCode 10
+            versionName "1.2.0"
         }
 
         videohighlights {
@@ -39,12 +39,12 @@ android {
 
     // Sources of Flavors
     sourceSets {
-        live {
+        live1016 {
             java {
-                srcDir 'src/live/java'
+                srcDir 'src/live1016/java'
             }
             resources {
-                srcDir 'src/live/res'
+                srcDir 'src/live1016/res'
             }
         }
 
