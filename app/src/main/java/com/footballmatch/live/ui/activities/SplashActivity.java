@@ -1,8 +1,14 @@
 package com.footballmatch.live.ui.activities;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 import com.footballmatch.live.R;
 import com.footballmatch.live.data.managers.StartupManager;
@@ -27,9 +33,59 @@ public class SplashActivity extends Activity implements StartupManager.OnStartup
         Intent intent = getIntent();
         setContentView(R.layout.activity_splash_layout);
 
-        // Startup AppConfigs
-        StartupManager.getInstance(getApplicationContext()).initStartupManager(this);
+        initApp();
+
     }
+
+    private void initApp()
+    {
+        // Startup AppConfigs
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+        {
+            requestWriteExternalStoragePermission();
+        }
+        else
+        {
+            StartupManager.getInstance(getApplicationContext()).initStartupManager(this);
+        }
+    }
+
+    private void requestWriteExternalStoragePermission() {
+
+        // Should we show an explanation?
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("You need to enable permissions to allow our app to work properly.")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                        }
+                    })
+                    .show();
+        } else {
+            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,  String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    // allowed
+                    initApp();
+                } else {
+                    // denied
+                    finish();
+                }
+            break;
+        }
+    }
+}
 
     @Override
     public void onStartupInitFinished(boolean isCorrectlyStarted, AppConfigs appConfigs)

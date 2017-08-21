@@ -1,5 +1,6 @@
 package com.footballmatch.live.ui.listindicators;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.widget.TextView;
 import com.footballmatch.live.R;
 import com.footballmatch.live.data.managers.PlayStreamManager;
 import com.footballmatch.live.data.model.StreamLinkEntity;
+import com.footballmatch.live.managers.ads.AdsManager;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
+import com.footballmatch.live.ui.views.BasePopupDialog;
 
 /**
  * Created by David Fortunato on 05/08/2016
@@ -84,13 +87,55 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
         recyclerViewHolder.getItemView().setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onClick(final View v)
             {
-                // Start Stream
-                PlayStreamManager.playStreamManager(recyclerViewHolder.getContext(), getObjectData());
+                startStream(recyclerViewHolder.getContext());
             }
         });
 
+    }
+
+    private void startStream(final Context context)
+    {
+        AdsManager.getInstance(context).showNonSkippableVideo((Activity) context, new AdsManager.OnInterstitialClosed()
+        {
+            @Override
+            public void onInterstitialClosed(boolean canContinue)
+            {
+                if (canContinue)
+                {
+                    // Start Stream
+                    PlayStreamManager.playStreamManager(context, getObjectData());
+                }
+                else
+                {
+                    BasePopupDialog basePopupDialog = new BasePopupDialog(context);
+                    basePopupDialog.setupPoup("You should watch the video until the end to start watching the football match  stream.", "Ok", "Cancel", new BasePopupDialog.OnPopupListener()
+                    {
+                        @Override
+                        public void onLeftBtnClick(BasePopupDialog basePopupDialog)
+                        {
+                            startStream(context);
+                            basePopupDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onRightBtnClick(BasePopupDialog basePopupDialog)
+                        {
+                            basePopupDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled()
+                        {
+
+                        }
+                    });
+                    basePopupDialog.show();
+                }
+
+            }
+        });
     }
 
     @Override

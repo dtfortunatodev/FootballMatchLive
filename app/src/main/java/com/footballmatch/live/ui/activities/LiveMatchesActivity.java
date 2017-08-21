@@ -67,7 +67,7 @@ public class LiveMatchesActivity extends BaseNavigationActivity implements Googl
 
         if (appConfigs.getTwitterPageUrl() != null && !appConfigs.checkShouldBlockSensibleData())
         {
-            menu.findItem(R.id.action_follow_twitter).setVisible(true);
+            menu.findItem(R.id.action_follow_twitter).setVisible(false);
         }
         else
         {

@@ -20,7 +20,7 @@
     <string name="popup_stream_cancel">cancel</string>
     <string name="popup_stream_acestream_install_app">To run this stream you should install the AceStream app. Click on "download" to start downloading the APK. \nYou should also allow the installation of unknown sources on settings. If you found any problem please contact us: footballmatch.app@gmail.com</string>
     <string name="popup_stream_sopcast_install_app">To run this stream you should install the Sopcast app. Click on "download" to start downloading the APK. \nYou should also allow the installation of unknown sources on settings. If you found any problem please contact us: footballmatch.app@gmail.com</string>
-    <string name="popup_stream_webplayer_install_app">To run this stream you should install a new Browser to run Flash Player. Click on "download" to start downloading the APK. \nYou should also allow the installation of unknown sources on settings. If you found any problem please contact us: footballmatch.app@gmail.com</string>
+    <string name="popup_stream_webplayer_install_app">To run this stream you should install a new Browser to run Flash Player. Click on "download" to start downloading the APK. \nIf you found any problem please contact us: footballmatch.app@gmail.com</string>
     <string name="error_getting_arenavision_stream">Something failed on getting the ArenaVision Stream. Please try another stream.</string>
     <string name="error_match_details_notfound">The match is not available.</string>
     <string name="error_loading_data">Something failed on loading data. Please check your connection and try again</string>

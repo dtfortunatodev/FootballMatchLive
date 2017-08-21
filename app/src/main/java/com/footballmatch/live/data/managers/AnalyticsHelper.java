@@ -1,8 +1,8 @@
 package com.footballmatch.live.data.managers;
 
+import android.os.Bundle;
 import com.footballmatch.live.FootballMatchApplication;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * Created by David Fortunato on 07/08/2016
@@ -12,7 +12,7 @@ public class AnalyticsHelper
 {
 
     // Tracker
-    private Tracker tracker;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     private static AnalyticsHelper instance;
@@ -30,15 +30,16 @@ public class AnalyticsHelper
 
     private AnalyticsHelper()
     {
-        tracker = FootballMatchApplication.getApplication().getDefaultTracker();
+        mFirebaseAnalytics = FootballMatchApplication.getApplication().getDefaultTracker();
     }
 
     public void sendEvent(String category, String action)
     {
-        tracker.send(new HitBuilders.EventBuilder()
-                              .setCategory(category)
-                              .setAction(action)
-                              .build());
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, category);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, action);
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "text");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
 }

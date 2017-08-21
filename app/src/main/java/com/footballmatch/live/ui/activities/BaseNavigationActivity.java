@@ -34,6 +34,9 @@ public class BaseNavigationActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
+        // Lifecycle to the AdsManager
+        AdsManager.getInstance(this).onCreate(this);
+
         // Default Menu Type
         currentActionBarType = ActionBarType.MENU;
 
@@ -56,10 +59,11 @@ public class BaseNavigationActivity extends AppCompatActivity
                 finish();
             }
         });
+        viewToolBar.offsetLeftAndRight(0);
         viewToolBar.setLogo(R.mipmap.ic_launcher);
 
         // Show Interstitial
-        AdsManager.getInstance(getBaseContext()).showInsterstitial(getBaseContext());
+        AdsManager.getInstance(getBaseContext()).showInsterstitial(this);
     }
 
 
@@ -151,6 +155,38 @@ public class BaseNavigationActivity extends AppCompatActivity
         super.onBackPressed();
     }
 
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        // Lifecycle to the AdsManager
+        AdsManager.getInstance(this).onResume(this);
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+        // Lifecycle to the AdsManager
+        AdsManager.getInstance(this).onStart(this);
+    }
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        // Lifecycle to the AdsManager
+        AdsManager.getInstance(this).onStop(this);
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+        // Lifecycle to the AdsManager
+        AdsManager.getInstance(this).onDestory(this);
+    }
 
     /**
      * Type

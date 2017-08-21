@@ -3,6 +3,7 @@ package com.footballmatch.live.ui.adapters;
 import android.content.Context;
 import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.MatchEntity;
+import com.footballmatch.live.managers.ads.AdsManager;
 import com.footballmatch.live.ui.listindicators.BaseRecyclerViewIndicator;
 import com.footballmatch.live.ui.listindicators.ListAdInternalIndicator;
 import com.footballmatch.live.ui.listindicators.ListAdNativeIndicator;
@@ -38,7 +39,8 @@ public class LiveMatchesRecyclerAdapter extends BaseRecyclerViewAdapter<MatchEnt
 
         // Add first ad
         // Check if should add Banner before the Competition separator
-        if (StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+        if (StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled() && StartupManager.getInstance(mContext).getAppAdsConfigs().getAdTypeEnum() !=
+                AdsManager.AdsType.APPODEAL)
         {
             listIndicators.add(new ListAdNativeIndicator());
         }

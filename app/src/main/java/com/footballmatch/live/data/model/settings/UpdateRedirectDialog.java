@@ -10,15 +10,17 @@ import com.footballmatch.live.data.model.BaseEntity;
 public class UpdateRedirectDialog extends BaseEntity
 {
 
-    private int    minVersion;
-    private int    currentVersion;
-    private String updateLink;
+    private int     minVersion;
+    private int     currentVersion;
+    private String  updateLink;
+    private boolean autoInstall;
 
     public UpdateRedirectDialog()
     {
         this.minVersion = 0;
         this.currentVersion = 0;
         this.updateLink = null;
+        this.autoInstall = false;
     }
 
     public int getMinVersion()
@@ -66,4 +68,13 @@ public class UpdateRedirectDialog extends BaseEntity
         return (isBlocked() || isUpdateAvailable());
     }
 
+    public boolean isAutoInstall()
+    {
+        return autoInstall;
+    }
+
+    public void setAutoInstall(boolean autoInstall)
+    {
+        this.autoInstall = autoInstall;
+    }
 }

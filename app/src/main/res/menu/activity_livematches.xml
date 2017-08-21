@@ -13,6 +13,7 @@
         android:orderInCategory="101"
         android:title="@string/action_share"
         android:icon="@drawable/btn_twitter_selector"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:visible="false"/>
 
 </menu>

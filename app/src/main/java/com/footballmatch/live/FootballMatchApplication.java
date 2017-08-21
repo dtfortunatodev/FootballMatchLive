@@ -1,8 +1,8 @@
 package com.footballmatch.live;
 
 import android.app.Application;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
+import android.os.StrictMode;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 /**
  * Created by David Fortunato on 09/08/2016
@@ -11,7 +11,7 @@ import com.google.android.gms.analytics.Tracker;
 public class FootballMatchApplication extends Application
 {
 
-    private Tracker mTracker;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private static FootballMatchApplication mApplication;
 
@@ -21,6 +21,9 @@ public class FootballMatchApplication extends Application
         super.onCreate();
 
         mApplication = this;
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
     }
 
     public static FootballMatchApplication getApplication()
@@ -30,18 +33,12 @@ public class FootballMatchApplication extends Application
 
 
     /**
-     * Gets the default {@link Tracker} for this {@link Application}.
      * @return tracker
      */
-    synchronized public Tracker getDefaultTracker() {
-        if (mTracker == null) {
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker(R.xml.global_tracker);
-
-            // Set Automatically Track Screens
-            mTracker.enableAutoActivityTracking(true);
+    synchronized public FirebaseAnalytics getDefaultTracker() {
+        if (mFirebaseAnalytics == null) {
+            mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         }
-        return mTracker;
+        return mFirebaseAnalytics;
     }
 }

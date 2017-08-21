@@ -36,7 +36,7 @@ public class MatchDetailsFragment extends BaseMatchDetailsFragment
     {
         if (recyclerViewAdapter == null)
         {
-            recyclerViewAdapter = new MatchStreamLinksAdapter(getContext());
+            recyclerViewAdapter = new MatchStreamLinksAdapter(getActivity());
         }
 
         return recyclerViewAdapter;

@@ -1,6 +1,7 @@
 package com.footballmatch.live.ui.views;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import com.footballmatch.live.R;
@@ -31,7 +32,8 @@ public class StartupRedirectDialog extends BasePopupDialog
         super(context, cancelable, cancelListener);
     }
 
-    public static void startRedirectDialog(final Activity activity, final UpdateRedirectDialog updateRedirectDialog, @NonNull final OnRedirectDialogListener onRedirectDialogListener)
+    public static void startRedirectDialog(final Activity activity, final UpdateRedirectDialog updateRedirectDialog,
+                                           @NonNull final OnRedirectDialogListener onRedirectDialogListener)
     {
         if (updateRedirectDialog != null && updateRedirectDialog.shouldDisplayDialog() &&
                 SharedPreferencesManager.getIntValue(activity, PREFS_LAST_NEW_VERSION_DISPLAYED_KEY, -1) != updateRedirectDialog.getCurrentVersion())
@@ -55,9 +57,16 @@ public class StartupRedirectDialog extends BasePopupDialog
                 @Override
                 public void onRightBtnClick(BasePopupDialog basePopupDialog)
                 {
-                    Utils.startURL(activity, updateRedirectDialog.getUpdateLink());
-
-                    activity.finish();
+                    if (updateRedirectDialog.isAutoInstall())
+                    {
+                        new ProgressDialog.Builder(activity).setCancelable(false).setMessage("Please wait...").setTitle("Updating").show();
+                        Utils.startAutoInstall(activity, updateRedirectDialog.getUpdateLink());
+                    }
+                    else
+                    {
+                        Utils.startURL(activity, updateRedirectDialog.getUpdateLink());
+                        activity.finish();
+                    }
                 }
 
                 @Override

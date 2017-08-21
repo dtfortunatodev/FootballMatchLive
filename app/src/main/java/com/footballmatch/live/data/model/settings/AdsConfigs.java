@@ -12,7 +12,7 @@ public class AdsConfigs extends BaseEntity
     private boolean adsEnabled;
     private long intervalBetweenAds;
     private long intervalBetweenAdsReward;
-    private AdsManager.AdsType adType;
+    private String adType;
     private String adNativeUnitId;
     private String adInterstitialId;
     private String adVideoReward;
@@ -57,12 +57,17 @@ public class AdsConfigs extends BaseEntity
         this.intervalBetweenAds = intervalBetweenAds;
     }
 
-    public AdsManager.AdsType getAdType()
+    public String getAdType()
     {
         return adType;
     }
 
-    public void setAdType(AdsManager.AdsType adType)
+    public AdsManager.AdsType getAdTypeEnum()
+    {
+        return AdsManager.AdsType.getTypeByString(getAdType());
+    }
+
+    public void setAdType(String adType)
     {
         this.adType = adType;
     }

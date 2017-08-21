@@ -41,6 +41,7 @@ public class LiveMatchesFragment extends BaseFragment
     @Override
     public void onRequestResponse(ResponseDataObject responseDataObject)
     {
+        super.onRequestResponse(responseDataObject);
         if (responseDataObject.isOk())
         {
             // Get Stream Links
@@ -65,7 +66,7 @@ public class LiveMatchesFragment extends BaseFragment
     {
         ViewGroup viewContainer = (ViewGroup) inflater.inflate(R.layout.fragment_live_matches_layout, null);
         recyclerView = (BaseRecyclerView) viewContainer.findViewById(R.id.viewRecyclerView);
-        recyclerAdapter = new LiveMatchesRecyclerAdapter(getContext());
+        recyclerAdapter = new LiveMatchesRecyclerAdapter(getActivity());
         recyclerView.setAdapter(recyclerAdapter);
 
         // Start Load Data

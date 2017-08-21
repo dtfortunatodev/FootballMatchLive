@@ -8,7 +8,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- List items Dimensions -->
-    <dimen name="ads_native_height">75dp</dimen>
+    <dimen name="ads_native_height">132px</dimen>
     <dimen name="list_item_team_logo_height">40dp</dimen>
     <dimen name="match_details_team_logo_size">60dp</dimen>
     <dimen name="match_details_register_notification_icon_size">35dp</dimen>

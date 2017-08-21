@@ -1,10 +1,13 @@
 package com.footballmatch.live.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 
 /**
  * Created by David Fortunato on 05/08/2016
@@ -32,6 +35,14 @@ public class UiUtil
             return null;
         }
 
+    }
+
+    public static int convertDpToPixel(float dp, Context context)
+    {
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / 160f);
+        return (int) Math.ceil(px);
     }
 
 }

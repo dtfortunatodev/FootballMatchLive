@@ -1,16 +1,29 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.footballmatch.live"
+        applicationId "com.dtfort.footballmatchlive"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 5
         versionName "1.1.0"
+        multiDexEnabled true
     }
+
+    packagingOptions {
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.properties'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okhttp3/okhttp/pom.xml'
+        exclude 'META-INF/maven/com.squareup.okio/okio/pom.properties'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "2g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,17 +34,17 @@ android {
     //  Product Flavors
     productFlavors {
         live1016 {
-            applicationId "com.footballmatch.live1016"
+            applicationId "com.dtfort.footballmatchlive"
             minSdkVersion 14
-            targetSdkVersion 23
-            versionCode 10
+            targetSdkVersion 25
+            versionCode 11
             versionName "1.2.0"
         }
 
         videohighlights {
             applicationId "com.footballmatch.videohighlights"
             minSdkVersion 14
-            targetSdkVersion 23
+            targetSdkVersion 25
             versionCode 5
             versionName "1.1.0"
         }
@@ -62,30 +75,30 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     compile "com.android.support:design:${rootProject.ext.supportVersion}"
     compile "com.android.support:recyclerview-v7:${rootProject.ext.supportVersion}"
-
-
     // Firebase Dependencies
     compile "com.google.firebase:firebase-invites:${rootProject.ext.firebaseVersion}"
     compile "com.google.firebase:firebase-core:${rootProject.ext.firebaseVersion}"
     compile "com.google.firebase:firebase-messaging:${rootProject.ext.firebaseVersion}"
+    compile "com.google.firebase:firebase-ads:${rootProject.ext.firebaseVersion}"
 
-    // Project Dependencies
-    compile 'com.google.android.gms:play-services-ads:9.4.0'
-    compile 'com.google.android.gms:play-services-analytics:9.4.0'
-    compile 'com.google.android.gms:play-services-location:9.4.0'
+    compile 'com.google.android.gms:play-services-location:10.2.6'
+    compile 'com.google.android.gms:play-services-ads:10.2.6'
 
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.okhttp3:okhttp:3.3.0'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-    // Ads
-//    compile('com.avocarrot:android-sdk:3.7.+')
+    compile project(':cheetah-mobile-3.4.7')
+
+//    compile('com.mopub:mopub-sdk:4.15.0@aar') {
+//        transitive = true
+//    }
 }
 
 // ADD THIS AT THE BOTTOM

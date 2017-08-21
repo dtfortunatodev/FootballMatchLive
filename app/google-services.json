@@ -1,123 +1,49 @@
 {
   "project_info": {
-    "project_number": "489163186315",
-    "firebase_url": "https://football-match-live.firebaseio.com",
-    "project_id": "football-match-live",
-    "storage_bucket": "football-match-live.appspot.com"
+    "project_number": "1093002539804",
+    "firebase_url": "https://openfootballlive.firebaseio.com",
+    "project_id": "openfootballlive",
+    "storage_bucket": "openfootballlive.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:489163186315:android:4b6549946b26c928",
+        "mobilesdk_app_id": "1:1093002539804:android:c221bb4d9f8983dc",
         "android_client_info": {
-          "package_name": "com.footballmatch.live"
+          "package_name": "com.dtfort.footballmatchlive"
         }
       },
       "oauth_client": [
         {
-          "client_id": "489163186315-kh5rhbqn1nt4k2tp8vvo39nl5ih9llme.apps.googleusercontent.com",
+          "client_id": "1093002539804-aj051dvtiigqk3m3s9pmup7i4ag4o866.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.footballmatch.live",
-            "certificate_hash": "99AF4EBDF3A63FC4E4CC503433A7E524A5E33C7C"
+            "package_name": "com.dtfort.footballmatchlive",
+            "certificate_hash": "1462661a9b32dc832920a6c67a9108c1573240ca"
           }
         },
         {
-          "client_id": "489163186315-uehimf2pildf884egtp7fobqt6v7ct8f.apps.googleusercontent.com",
+          "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAJUsGSfyBLXzH-lYjnvNpRDhUB3RGrz34"
+          "current_key": "AIzaSyDcoUl45FbcVEb7hUTjxHUr8DZbcTxvF3k"
         }
       ],
       "services": {
         "analytics_service": {
-          "status": 2,
-          "analytics_property": {
-            "tracking_id": "UA-78410702-1"
-          }
+          "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:489163186315:android:3733dbdb3a0b14a3",
-        "android_client_info": {
-          "package_name": "com.footballmatch.videohighlights"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "489163186315-em89gmomh4jnr7ge3ebj30o9h2qig06n.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.footballmatch.videohighlights",
-            "certificate_hash": "99AF4EBDF3A63FC4E4CC503433A7E524A5E33C7C"
-          }
-        },
-        {
-          "client_id": "489163186315-uehimf2pildf884egtp7fobqt6v7ct8f.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAJUsGSfyBLXzH-lYjnvNpRDhUB3RGrz34"
-        }
-      ],
-      "services": {
-        "analytics_service": {
           "status": 2,
-          "analytics_property": {
-            "tracking_id": "UA-78410702-4"
-          }
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:489163186315:android:7493b52501a17875",
-        "android_client_info": {
-          "package_name": "com.footballmatch.live1016"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "489163186315-uehimf2pildf884egtp7fobqt6v7ct8f.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAJUsGSfyBLXzH-lYjnvNpRDhUB3RGrz34"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 2,
-          "analytics_property": {
-            "tracking_id": "UA-78410702-1"
-          }
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
