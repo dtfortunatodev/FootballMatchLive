@@ -37,7 +37,7 @@ android {
             applicationId "com.dtfort.footballmatchlive"
             minSdkVersion 14
             targetSdkVersion 25
-            versionCode 11
+            versionCode 12
             versionName "1.2.0"
         }
 
