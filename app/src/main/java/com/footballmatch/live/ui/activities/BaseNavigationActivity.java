@@ -60,7 +60,7 @@ public class BaseNavigationActivity extends AppCompatActivity
             }
         });
         viewToolBar.offsetLeftAndRight(0);
-        viewToolBar.setLogo(R.mipmap.ic_launcher);
+        viewToolBar.setLogo(R.drawable.ic_launcher);
 
         // Show Interstitial
         AdsManager.getInstance(getBaseContext()).showInsterstitial(this);

@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.footballmatch.live.R;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.MatchEntity;
 import com.footballmatch.live.ui.fragments.MatchDetailsFragment;
 import com.footballmatch.live.utils.Utils;
@@ -83,7 +84,7 @@ public class MatchDetailsActivity extends BaseNavigationActivity
         StringBuilder stringBuilder = new StringBuilder();
 
         // Generate Base Url
-        stringBuilder.append(getString(R.string.share_base_url));
+        stringBuilder.append(StartupManager.getInstance(getBaseContext()).getAppConfigs().getShareBaseLink());
         stringBuilder.append("?apn=").append(getApplicationContext().getPackageName());
         stringBuilder.append("&al=fmlive://matchDetails?link=").append(matchEntity.getLinkUrl());
         stringBuilder.append("&link=").append("https://play.google.com/store/apps/details?id=").append(getApplicationContext().getPackageName());

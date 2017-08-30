@@ -22,6 +22,7 @@ public class AppConfigs extends BaseEntity
     private IpCatchEntity        userCurrentIp;
     private List<IpCatchEntity>  listIpsToValidate;
     private AdInternalEntity     internalAds;
+    private String               shareBaseLink;
 
     // Social
     private String facebookPageUrl;
@@ -41,6 +42,7 @@ public class AppConfigs extends BaseEntity
         updateRedirectDialog = new UpdateRedirectDialog();
         shouldBlockSensibleData = false;
         blockAfterVersion = -1;
+        this.shareBaseLink = "https://aep7s.app.goo.gl/";
     }
 
     public StartupMessageEntity getStartupMessageEntity()
@@ -233,5 +235,15 @@ public class AppConfigs extends BaseEntity
     public void setInternalAds(AdInternalEntity internalAds)
     {
         this.internalAds = internalAds;
+    }
+
+    public String getShareBaseLink()
+    {
+        return shareBaseLink;
+    }
+
+    public void setShareBaseLink(String shareBaseLink)
+    {
+        this.shareBaseLink = shareBaseLink;
     }
 }

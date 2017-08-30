@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.dtfort.footballmatchlive"
+        applicationId "com.dtfort.footballmatch"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 5
@@ -34,10 +34,10 @@ android {
     //  Product Flavors
     productFlavors {
         live1016 {
-            applicationId "com.dtfort.footballmatchlive"
+            applicationId "com.dtfort.footballlive"
             minSdkVersion 14
             targetSdkVersion 25
-            versionCode 12
+            versionCode 15
             versionName "1.2.0"
         }
 
