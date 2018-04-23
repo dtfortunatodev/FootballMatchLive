@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.dtfort.footballmatch"
@@ -31,14 +31,16 @@ android {
         }
     }
 
+    flavorDimensions "app-type"
     //  Product Flavors
     productFlavors {
         live1016 {
-            applicationId "com.dtfort.footballlive"
+            applicationId "com.footballmatch.liveapp"
             minSdkVersion 14
             targetSdkVersion 25
             versionCode 15
             versionName "1.2.0"
+            dimension "app-type"
         }
 
         videohighlights {
@@ -47,6 +49,7 @@ android {
             targetSdkVersion 25
             versionCode 5
             versionName "1.1.0"
+            dimension "app-type"
         }
     }
 

@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "1093002539804",
-    "firebase_url": "https://openfootballlive.firebaseio.com",
-    "project_id": "openfootballlive",
-    "storage_bucket": "openfootballlive.appspot.com"
+    "project_number": "568514975894",
+    "firebase_url": "https://football-match-live-2018.firebaseio.com",
+    "project_id": "football-match-live-2018",
+    "storage_bucket": "football-match-live-2018.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1093002539804:android:e7b6044142312433",
+        "mobilesdk_app_id": "1:568514975894:android:f9b7e8c94bed79e7",
         "android_client_info": {
-          "package_name": "com.dtfort.footballmatch"
+          "package_name": "com.footballmatch.liveapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1093002539804-alt4p1371ft63b8hp7h4lld8usct25dj.apps.googleusercontent.com",
+          "client_id": "568514975894-vfbrqjsdq7qirfvov3ic4ol2cmlsf190.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.dtfort.footballmatch",
+            "package_name": "com.footballmatch.liveapp",
             "certificate_hash": "1462661a9b32dc832920a6c67a9108c1573240ca"
           }
         },
         {
-          "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
+          "client_id": "568514975894-i4bo1r8cuacsqgd5js0k98smmla59r1n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDcoUl45FbcVEb7hUTjxHUr8DZbcTxvF3k"
+          "current_key": "AIzaSyAZi65mBR2bgFs4WHQyzCfN5aWDGU4YnV4"
         }
       ],
       "services": {
@@ -40,51 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1093002539804:android:fdbe1a0599ea1b5f",
-        "android_client_info": {
-          "package_name": "com.dtfort.footballlive"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1093002539804-o861d71svic5ruaggn6s8lvd68ujgu83.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.dtfort.footballlive",
-            "certificate_hash": "1462661a9b32dc832920a6c67a9108c1573240ca"
-          }
-        },
-        {
-          "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDcoUl45FbcVEb7hUTjxHUr8DZbcTxvF3k"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1093002539804-hpo1up5a534baa6on015tl03s42p0bgc.apps.googleusercontent.com",
+              "client_id": "568514975894-i4bo1r8cuacsqgd5js0k98smmla59r1n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
