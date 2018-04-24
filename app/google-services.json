@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "568514975894-57i2oftn9c3ad3ior0kvndkhkffih38r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.footballmatch.liveapp",
+            "certificate_hash": "0a6a7276243b4666f2189717c141b9cfc2250e0a"
+          }
+        },
+        {
           "client_id": "568514975894-vfbrqjsdq7qirfvov3ic4ol2cmlsf190.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
