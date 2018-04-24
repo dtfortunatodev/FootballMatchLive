@@ -7,6 +7,6 @@
     <string name="share_final_link">https://www.reddit.com/r/FootballMatchLive/</string>
     <string name="url_scheme_base">fmlive://matchDetails?link=</string>
     <string name="scheme">fmlive</string>
-    <string name="scheme_host">matchDetails</string>
+    <string name="scheme_host">matchdetails</string>
 
 </resources>

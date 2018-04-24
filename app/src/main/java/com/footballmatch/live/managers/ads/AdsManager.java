@@ -170,6 +170,11 @@ public class AdsManager
                         onAdRewardCallback.onSuccessShouldContinue();
                     }
                 }
+
+                @Override
+                public void onRewardedVideoCompleted() {
+
+                }
             });
         }
         else if (onAdRewardCallback != null)

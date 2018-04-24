@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.footballmatch.live.R;
 import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.settings.AppConfigs;
+import com.footballmatch.live.managers.AuthManagerSingleton;
 import com.footballmatch.live.ui.views.BasePopupDialog;
 import com.footballmatch.live.ui.views.StartupRedirectDialog;
 
@@ -101,7 +102,7 @@ public class SplashActivity extends Activity implements StartupManager.OnStartup
                 {
                     if(StartupManager.getInstance(getApplicationContext()).isAbleToRunApp())
                     {
-                        LiveMatchesActivity.startActivity(SplashActivity.this);
+                        AuthManagerSingleton.getInstance().initApp(SplashActivity.this);
                         finish();
                     } else
                     {

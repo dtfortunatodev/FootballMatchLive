@@ -20,13 +20,13 @@ buildscript {
 }
 
 ext {
-    compileSdkVersion = 'Google Inc.:Google APIs:25'
+    compileSdkVersion = 'Google Inc.:Google APIs:27'
     buildToolsVersion = '23.0.1'
     minSdkVersion = 15
-    targetSdkVersion = 25
-    supportVersion = '25.2.0'
-    playServicesVersion = '11.0.4'
-    firebaseVersion = '10.2.6'
+    targetSdkVersion = 27
+    supportVersion = '26.1.0'
+    playServicesVersion = '15.0.0'
+    firebaseVersion = '15.0.0'
 }
 
 allprojects {
