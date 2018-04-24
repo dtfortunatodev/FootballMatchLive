@@ -8,7 +8,6 @@ import com.appodeal.ads.Appodeal;
 import com.appodeal.ads.BannerCallbacks;
 import com.appodeal.ads.InterstitialCallbacks;
 import com.appodeal.ads.NonSkippableVideoCallbacks;
-import com.footballmatch.live.R;
 import com.footballmatch.live.data.managers.SharedPreferencesManager;
 import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.settings.AdsConfigs;
@@ -38,7 +37,7 @@ public class AdsManager
 
 
     // Test Device
-    private static final String TEST_DEVICE_ID = "1EC9706F2EBA55D6C3FE89B489471888";
+    private static final String TEST_DEVICE_ID = "137188697A40554BC98E7B9FCD8E654E";
 
     private AdsConfigs adsConfigs;
 
@@ -83,7 +82,8 @@ public class AdsManager
         {
             case ADMOB:
                 NativeExpressAdView nativeExpressAdView = new NativeExpressAdView(context);
-                nativeExpressAdView.setAdSize(new AdSize(AdSize.FULL_WIDTH, context.getResources().getDimensionPixelSize(R.dimen.ads_native_height)));
+                nativeExpressAdView.setAdSize(AdSize.SMART_BANNER);
+                //nativeExpressAdView.setAdSize(new AdSize(AdSize.FULL_WIDTH, context.getResources().getDimensionPixelSize(R.dimen.ads_native_height)));
                 nativeExpressAdView.setAdUnitId(adsConfigs.getAdNativeUnitId());
 
                 // Create an ad request.
