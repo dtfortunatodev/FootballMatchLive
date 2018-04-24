@@ -115,12 +115,6 @@
 -keep class com.revmob.** { *; }
 -dontwarn com.revmob.**
 
-# Admob
--keep class com.google.android.gms.ads.** { *; }
-
-# Google
--keep class com.google.android.gms.common.GooglePlayServicesUtil {*;}
--keep class com.google.android.gms.ads.identifier.** { *; }
 -dontwarn com.google.android.gms.**
 
 # Legacy
@@ -157,8 +151,6 @@
   public <fields>;
   public <methods>;
 }
--keep class com.google.android.gms.common.GooglePlayServicesNotAvailableException {*;}
--keep class com.google.android.gms.common.GooglePlayServicesRepairableException {*;}
 
 # Google Play Services library 9.0.0 only
 -dontwarn android.security.NetworkSecurityPolicy
@@ -174,6 +166,7 @@
 -keep class android.support.v4.view.PagerAdapter { *; }
 -keep class android.support.v4.view.ViewPager { *; }
 -keep class android.support.v4.content.ContextCompat { *; }
+-keep class com.google.** {*;}
 
 # support-v7-recyclerview
 -keep class android.support.v7.widget.RecyclerView { *; }
