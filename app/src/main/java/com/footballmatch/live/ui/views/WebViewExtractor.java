@@ -1,6 +1,7 @@
 package com.footballmatch.live.ui.views;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -49,8 +50,37 @@ public class WebViewExtractor extends WebView
             public void onPageFinished(WebView view, String url) {
                 loadUrl("javascript:window.HtmlViewer.showHTML" +
                                         "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
+                //startExtractingWithDelay();
             }
         });
+    }
+
+    public void startExtractingWithDelay() {
+        new AsyncTask<Void, Void, Void>()
+        {
+            @Override
+            protected Void doInBackground(Void... voids)
+            {
+                // Wait loading
+                try
+                {
+                    Thread.sleep(5000);
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid)
+            {
+                loadUrl("javascript:window.HtmlViewer.showHTML" +
+                                "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
+                super.onPostExecute(aVoid);
+            }
+        }.execute();
     }
 
     public String getHtml() {

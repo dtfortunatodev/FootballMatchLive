@@ -63,7 +63,7 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
                 String html = null;
                 try
                 {
-                    Thread.sleep(10000);
+                    Thread.sleep(5000);
                     html = this.webView.getHtml();
                 }
                 catch (InterruptedException e)

@@ -1,6 +1,7 @@
 package com.footballmatch.live.data.requests;
 
 import com.footballmatch.live.data.managers.HTMLRequestManager;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class ArenaVisionGetLinkRequest
         {
             Document document;
             if(html != null) {
-                document = new Document(html);
+                document = Jsoup.parse(html);
             } else {
                 document = HTMLRequestManager.getData(url);
             }
