@@ -17,15 +17,20 @@ public class ArenaVisionGetLinkRequest
      * @param url Url to analyze
      * @return Url to play or null
      */
-    public static String getArenaVisionLink(String url)
+    public static String getArenaVisionLink(String url, String html)
     {
         String arenaVisionUrl = null;
         try
         {
-            Document document = HTMLRequestManager.getData(url);
+            Document document;
+            if(html != null) {
+                document = new Document(html);
+            } else {
+                document = HTMLRequestManager.getData(url);
+            }
 
             // Trying getting AceStream
-            Elements elements = document.select("p.auto-style1 a[href^=acestream://]");
+            Elements elements = document.select("a[href^=acestream://]");
 
             // Check if got
             if (elements != null && !elements.isEmpty())

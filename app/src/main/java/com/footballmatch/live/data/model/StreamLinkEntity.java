@@ -38,7 +38,7 @@ public class StreamLinkEntity extends BaseEntity
                 // Sopcast link
                 setStreamLinkType(StreamLinkType.ACESTREAM);
             }
-            else if (streamLinkUrl.startsWith("http://arenavision.in"))
+            else if (streamLinkUrl.startsWith("http://arenavision"))
             {
                 // ArenaVision Link
                 setStreamLinkType(StreamLinkType.ARENAVISION);
