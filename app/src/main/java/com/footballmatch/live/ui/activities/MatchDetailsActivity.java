@@ -87,7 +87,7 @@ public class MatchDetailsActivity extends BaseNavigationActivity
         stringBuilder.append(StartupManager.getInstance(getBaseContext()).getAppConfigs().getShareBaseLink());
         stringBuilder.append("?apn=").append(getApplicationContext().getPackageName());
         stringBuilder.append("&al=fmlive://matchDetails?link=").append(matchEntity.getLinkUrl());
-        stringBuilder.append("&link=").append("https://play.google.com/store/apps/details?id=").append(getApplicationContext().getPackageName());
+        stringBuilder.append("&link=").append(StartupManager.getInstance(getBaseContext()).getAppConfigs().getUpdateRedirectDialog().getUpdateLink());
         return stringBuilder.toString();
     }
 

@@ -16,4 +16,11 @@
         app:showAsAction="always"
         android:visible="false"/>
 
+    <item
+        android:id="@+id/action_follow_reddit"
+        android:orderInCategory="102"
+        android:title="@string/action_share"
+        android:icon="@drawable/btn_reddit_selector"
+        app:showAsAction="always"/>
+
 </menu>

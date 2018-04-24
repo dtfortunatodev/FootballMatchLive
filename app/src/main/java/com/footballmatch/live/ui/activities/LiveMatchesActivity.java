@@ -74,6 +74,15 @@ public class LiveMatchesActivity extends BaseNavigationActivity implements Googl
             menu.findItem(R.id.action_follow_twitter).setVisible(false);
         }
 
+        if (appConfigs.getRedditPageUrl() != null && !appConfigs.checkShouldBlockSensibleData())
+        {
+            menu.findItem(R.id.action_follow_reddit).setVisible(true);
+        }
+        else
+        {
+            menu.findItem(R.id.action_follow_reddit).setVisible(false);
+        }
+
         return true;
     }
 
@@ -87,6 +96,9 @@ public class LiveMatchesActivity extends BaseNavigationActivity implements Googl
                 return true;
             case R.id.action_follow_twitter:
                 Utils.startURL(getBaseContext(), StartupManager.getInstance(getBaseContext()).getAppConfigs().getTwitterPageUrl());
+                return true;
+            case R.id.action_follow_reddit:
+                Utils.startURL(getBaseContext(), StartupManager.getInstance(getBaseContext()).getAppConfigs().getRedditPageUrl());
                 return true;
         }
 

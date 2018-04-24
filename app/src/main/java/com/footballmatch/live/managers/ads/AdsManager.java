@@ -37,7 +37,7 @@ public class AdsManager
 
 
     // Test Device
-    private static final String TEST_DEVICE_ID = "137188697A40554BC98E7B9FCD8E654E";
+    private static final String TEST_DEVICE_ID = "";
 
     private AdsConfigs adsConfigs;
 

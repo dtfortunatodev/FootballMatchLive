@@ -27,6 +27,7 @@ public class AppConfigs extends BaseEntity
     // Social
     private String facebookPageUrl;
     private String twitterPageUrl;
+    private String redditPageUrl;
 
     // Apps
     private String aceStreamAppPackagege     = "org.acestream.media";
@@ -215,6 +216,16 @@ public class AppConfigs extends BaseEntity
     public void setFacebookPageUrl(String facebookPageUrl)
     {
         this.facebookPageUrl = facebookPageUrl;
+    }
+
+    public String getRedditPageUrl()
+    {
+        return redditPageUrl;
+    }
+
+    public void setRedditPageUrl(String redditPageUrl)
+    {
+        this.redditPageUrl = redditPageUrl;
     }
 
     public boolean isSubsNotificationEnabled()
