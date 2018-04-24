@@ -16,6 +16,7 @@ public class AppConfigs extends BaseEntity
     private int                  blockAfterVersion;
     private boolean              subsNotificationEnabled;
     private boolean              shouldBlockSensibleData;
+    private boolean              authenticationEnabled;
     private StartupMessageEntity startupMessageEntity;
     private UpdateRedirectDialog updateRedirectDialog;
     private AdsConfigs           adsConfigs;
@@ -256,5 +257,15 @@ public class AppConfigs extends BaseEntity
     public void setShareBaseLink(String shareBaseLink)
     {
         this.shareBaseLink = shareBaseLink;
+    }
+
+    public boolean isAuthenticationEnabled()
+    {
+        return authenticationEnabled;
+    }
+
+    public void setAuthenticationEnabled(boolean authenticationEnabled)
+    {
+        this.authenticationEnabled = authenticationEnabled;
     }
 }

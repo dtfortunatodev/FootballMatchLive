@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import com.firebase.ui.auth.AuthUI;
 import com.footballmatch.live.data.managers.SharedPreferencesManager;
+import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.ui.activities.AuthActivity;
 import com.footballmatch.live.ui.activities.LiveMatchesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,7 +44,7 @@ public class AuthManagerSingleton
      * @param activity
      */
     public void initApp(Activity activity) {
-        if(isLoggedin(activity)) {
+        if(isLoggedin(activity) || !StartupManager.getInstance(activity).getAppConfigs().isAuthenticationEnabled()) {
             // Continue normal app flow
             LiveMatchesActivity.startActivity(activity);
         } else {
