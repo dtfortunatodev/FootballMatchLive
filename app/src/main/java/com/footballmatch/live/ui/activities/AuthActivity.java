@@ -41,7 +41,6 @@ public class AuthActivity extends Activity
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 AuthManagerSingleton.getInstance().signinSuccess(this, user);
             } else {
-
                 // Sign in failed, check response for error code
                 this.displayFailedScreen();
             }

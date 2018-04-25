@@ -29,7 +29,7 @@ public class LogUtil
      */
     public static void e(String tag, String message)
     {
-        Log.d(tag, message);
+        Log.e(tag, message);
     }
 
     /**
