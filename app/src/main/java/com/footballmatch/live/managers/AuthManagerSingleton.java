@@ -85,7 +85,7 @@ public class AuthManagerSingleton
     }
 
     public void signinSuccess(Activity activity, FirebaseUser user) {
-        //SharedPreferencesManager.putStringMessage(activity, KEY_EMAIL, user.getEmail());
+        SharedPreferencesManager.putStringMessage(activity, KEY_EMAIL, user.getEmail());
         // Continue normal app flow
         LiveMatchesActivity.startActivity(activity);
         activity.finish();
