@@ -93,52 +93,65 @@ public class StreamsMatchListRequest
      */
     private static List<StreamLinkEntity> parseDetailsMatchToListStreams(Document document)
     {
+
         // Init List
         List<StreamLinkEntity> listStreams = new ArrayList<>();
 
-        // Select Main Container
-        final String SELECT_CENTER_CONTAINER = "div#main div#maincontent div#content div.single";
-        Elements elCenterContainer = document.select(SELECT_CENTER_CONTAINER);
 
-        if (elCenterContainer != null)
+        switch (Urls.SOURCE_TYPE)
         {
+            case LIVEFOOTBALLVIDEO:
+                // Select Main Container
+                final String SELECT_CENTER_CONTAINER = "div#main div#maincontent div#content div.single";
+                Elements elCenterContainer = document.select(SELECT_CENTER_CONTAINER);
 
-            // Get SopCast Streams
-            final String SELECT_SOPCAST_LIST = "div#sopcastlist table.streamtable a.play";
-            Elements elListSopcast = elCenterContainer.select(SELECT_SOPCAST_LIST);
-
-            if (elListSopcast != null && !elListSopcast.isEmpty())
-            {
-                // ForEach element
-                for (Element element : elListSopcast)
+                if (elCenterContainer != null)
                 {
-                    StreamLinkEntity streamLinkEntity = parseLineStreamTableToStreamLinkEntity(element);
-                    if(streamLinkEntity != null)
+
+                    // Get SopCast Streams
+                    final String SELECT_SOPCAST_LIST = "div#sopcastlist table.streamtable a.play";
+                    Elements elListSopcast = elCenterContainer.select(SELECT_SOPCAST_LIST);
+
+                    if (elListSopcast != null && !elListSopcast.isEmpty())
                     {
-                        listStreams.add(streamLinkEntity);
+                        // ForEach element
+                        for (Element element : elListSopcast)
+                        {
+                            StreamLinkEntity streamLinkEntity = parseLineStreamTableToStreamLinkEntity(element);
+                            if(streamLinkEntity != null)
+                            {
+                                listStreams.add(streamLinkEntity);
+                            }
+                        }
                     }
-                }
-            }
 
 
-            // Get Other Streams
-            final String SELECT_OTHER_STREAMS_LIST = "div#livelist table.streamtable a.play";
-            Elements elOtherStreams = elCenterContainer.select(SELECT_OTHER_STREAMS_LIST);
+                    // Get Other Streams
+                    final String SELECT_OTHER_STREAMS_LIST = "div#livelist table.streamtable a.play";
+                    Elements elOtherStreams = elCenterContainer.select(SELECT_OTHER_STREAMS_LIST);
 
-            if (elOtherStreams != null && !elOtherStreams.isEmpty())
-            {
-                // ForEach element
-                for (Element element : elOtherStreams)
-                {
-                    StreamLinkEntity streamLinkEntity = parseLineStreamTableToStreamLinkEntity(element);
-                    if(streamLinkEntity != null)
+                    if (elOtherStreams != null && !elOtherStreams.isEmpty())
                     {
-                        listStreams.add(streamLinkEntity);
+                        // ForEach element
+                        for (Element element : elOtherStreams)
+                        {
+                            StreamLinkEntity streamLinkEntity = parseLineStreamTableToStreamLinkEntity(element);
+                            if(streamLinkEntity != null)
+                            {
+                                listStreams.add(streamLinkEntity);
+                            }
+                        }
                     }
-                }
-            }
 
+                }
+                break;
+
+            case LIVESPORTWS:
+                // TODO Parse to use LIVESPOTWS
+                break;
         }
+
+
 
         // Sort List
         Collections.sort(listStreams, STREAM_LIST_SORT);

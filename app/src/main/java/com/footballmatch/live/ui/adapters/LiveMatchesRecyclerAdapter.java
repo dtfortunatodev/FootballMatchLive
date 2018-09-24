@@ -48,26 +48,29 @@ public class LiveMatchesRecyclerAdapter extends BaseRecyclerViewAdapter<MatchEnt
         String currentCompetition = "";
         for (MatchEntity matchEntity : listData)
         {
-            // Check if is a net competition
-            if (matchEntity.getCompetitionEntity() != null && matchEntity.getCompetitionEntity().getCompetitionName() != null &&
-                    !currentCompetition.equalsIgnoreCase(matchEntity.getCompetitionEntity().getCompetitionLink()))
+            if (matchEntity.isAvailable())
             {
-                // Check if should add Banner before the Competition separator
-                if (counter >= StartupManager.getInstance(mContext).getAppAdsConfigs().getListIntervalNativeBanner() &&
-                        StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+                // Check if is a net competition
+                if (matchEntity.getCompetitionEntity() != null && matchEntity.getCompetitionEntity().getCompetitionName() != null &&
+                        !currentCompetition.equalsIgnoreCase(matchEntity.getCompetitionEntity().getCompetitionName()))
                 {
-                    listIndicators.add(new ListAdNativeIndicator());
-                    counter = 0;
+                    // Check if should add Banner before the Competition separator
+                    if (counter >= StartupManager.getInstance(mContext).getAppAdsConfigs().getListIntervalNativeBanner() &&
+                            StartupManager.getInstance(mContext).getAppAdsConfigs().isAdsEnabled())
+                    {
+                        listIndicators.add(new ListAdNativeIndicator());
+                        counter = 0;
+                    }
+
+                    listIndicators.add(new ListCompetitionSeparatorIndicator(matchEntity.getCompetitionEntity()));
+                    currentCompetition = matchEntity.getCompetitionEntity().getCompetitionName();
                 }
 
-                listIndicators.add(new ListCompetitionSeparatorIndicator(matchEntity.getCompetitionEntity()));
-                currentCompetition = matchEntity.getCompetitionEntity().getCompetitionLink();
+                listIndicators.add(new ListMatchIndicator(matchEntity));
+
+
+                counter++;
             }
-
-            listIndicators.add(new ListMatchIndicator(matchEntity));
-
-
-            counter++;
         }
         addListIndicators(listIndicators, cleanListBefore);
     }

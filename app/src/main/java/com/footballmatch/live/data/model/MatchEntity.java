@@ -16,9 +16,11 @@ public class MatchEntity extends BaseEntity
     private long startDateMillis;
     private long endDateMillis;
     private boolean isLive;
+    private boolean isAvailable;
 
     public MatchEntity()
     {
+        this.isAvailable = true;
     }
 
     public TeamEntity getTeamHome()
@@ -99,5 +101,15 @@ public class MatchEntity extends BaseEntity
     public void setScore(String score)
     {
         this.score = score;
+    }
+
+    public boolean isAvailable()
+    {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available)
+    {
+        isAvailable = available;
     }
 }
