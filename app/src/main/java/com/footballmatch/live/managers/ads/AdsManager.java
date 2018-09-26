@@ -2,12 +2,7 @@ package com.footballmatch.live.managers.ads;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
-import com.appodeal.ads.Appodeal;
-import com.appodeal.ads.BannerCallbacks;
-import com.appodeal.ads.InterstitialCallbacks;
-import com.appodeal.ads.NonSkippableVideoCallbacks;
 import com.footballmatch.live.data.managers.SharedPreferencesManager;
 import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.settings.AdsConfigs;
@@ -206,41 +201,41 @@ public class AdsManager
                     });
                     break;
 
-                case APPODEAL:
-                    Appodeal.show(activity, Appodeal.NON_SKIPPABLE_VIDEO);
-                    Appodeal.setNonSkippableVideoCallbacks(new NonSkippableVideoCallbacks()
-                    {
-                        @Override
-                        public void onNonSkippableVideoLoaded()
-                        {
-
-                        }
-
-                        @Override
-                        public void onNonSkippableVideoFailedToLoad()
-                        {
-                            onInterstitialClosed.onInterstitialClosed(true);
-                        }
-
-                        @Override
-                        public void onNonSkippableVideoShown()
-                        {
-                        }
-
-                        @Override
-                        public void onNonSkippableVideoFinished()
-                        {
-                            onInterstitialClosed.onInterstitialClosed(true);
-                            updateAdRewardedTimestamp(activity);
-                        }
-
-                        @Override
-                        public void onNonSkippableVideoClosed(boolean b)
-                        {
-                            onInterstitialClosed.onInterstitialClosed(false);
-                        }
-                    });
-                    break;
+//                case APPODEAL:
+//                    Appodeal.show(activity, Appodeal.NON_SKIPPABLE_VIDEO);
+//                    Appodeal.setNonSkippableVideoCallbacks(new NonSkippableVideoCallbacks()
+//                    {
+//                        @Override
+//                        public void onNonSkippableVideoLoaded()
+//                        {
+//
+//                        }
+//
+//                        @Override
+//                        public void onNonSkippableVideoFailedToLoad()
+//                        {
+//                            onInterstitialClosed.onInterstitialClosed(true);
+//                        }
+//
+//                        @Override
+//                        public void onNonSkippableVideoShown()
+//                        {
+//                        }
+//
+//                        @Override
+//                        public void onNonSkippableVideoFinished()
+//                        {
+//                            onInterstitialClosed.onInterstitialClosed(true);
+//                            updateAdRewardedTimestamp(activity);
+//                        }
+//
+//                        @Override
+//                        public void onNonSkippableVideoClosed(boolean b)
+//                        {
+//                            onInterstitialClosed.onInterstitialClosed(false);
+//                        }
+//                    });
+//                    break;
                 default:
                     onInterstitialClosed.onInterstitialClosed(true);
                     break;
@@ -305,41 +300,41 @@ public class AdsManager
                     mInterstitialAd.loadAd(adRequest);
                     break;
 
-                case APPODEAL:
-                    Appodeal.show(context, Appodeal.INTERSTITIAL);
-                    Appodeal.setInterstitialCallbacks(new InterstitialCallbacks()
-                    {
-                        @Override
-                        public void onInterstitialLoaded(boolean b)
-                        {
-
-                        }
-
-                        @Override
-                        public void onInterstitialFailedToLoad()
-                        {
-                            Appodeal.show(context, Appodeal.NON_SKIPPABLE_VIDEO);
-                        }
-
-                        @Override
-                        public void onInterstitialShown()
-                        {
-
-                        }
-
-                        @Override
-                        public void onInterstitialClicked()
-                        {
-
-                        }
-
-                        @Override
-                        public void onInterstitialClosed()
-                        {
-
-                        }
-                    });
-                    break;
+//                case APPODEAL:
+//                    Appodeal.show(context, Appodeal.INTERSTITIAL);
+//                    Appodeal.setInterstitialCallbacks(new InterstitialCallbacks()
+//                    {
+//                        @Override
+//                        public void onInterstitialLoaded(boolean b)
+//                        {
+//
+//                        }
+//
+//                        @Override
+//                        public void onInterstitialFailedToLoad()
+//                        {
+//                            Appodeal.show(context, Appodeal.NON_SKIPPABLE_VIDEO);
+//                        }
+//
+//                        @Override
+//                        public void onInterstitialShown()
+//                        {
+//
+//                        }
+//
+//                        @Override
+//                        public void onInterstitialClicked()
+//                        {
+//
+//                        }
+//
+//                        @Override
+//                        public void onInterstitialClosed()
+//                        {
+//
+//                        }
+//                    });
+//                    break;
 
             }
             // Update Last Time Displayed
@@ -399,7 +394,7 @@ public class AdsManager
                 if (!mHasAppodealCreated)
                 {
                     String appKey = StartupManager.getInstance(activity).getAppAdsConfigs().getAdNativeUnitId();
-                    Appodeal.initialize(activity, appKey, Appodeal.INTERSTITIAL | Appodeal.BANNER_BOTTOM | Appodeal.NON_SKIPPABLE_VIDEO);
+                    //Appodeal.initialize(activity, appKey, Appodeal.INTERSTITIAL | Appodeal.BANNER_BOTTOM | Appodeal.NON_SKIPPABLE_VIDEO);
                     //Appodeal.setTesting(true);
                     mHasAppodealCreated = true;
                 }
@@ -410,43 +405,43 @@ public class AdsManager
 
     public void onResume(Activity activity)
     {
-        if (checkIfShouldDisplayAds(activity))
-        {
-            switch (StartupManager.getInstance(activity).getAppAdsConfigs().getAdTypeEnum())
-            {
-                case APPODEAL:
-                    Appodeal.onResume(activity, Appodeal.BANNER_BOTTOM);
-                    Appodeal.setSmartBanners(true);
-                    Appodeal.setBannerCallbacks(new BannerCallbacks()
-                    {
-                        @Override
-                        public void onBannerLoaded(int i, boolean b)
-                        {
-                            Log.d(TAG, "onBannerLoaded");
-                        }
-
-                        @Override
-                        public void onBannerFailedToLoad()
-                        {
-                            Log.d(TAG, "onBannerFailedToLoad");
-                        }
-
-                        @Override
-                        public void onBannerShown()
-                        {
-                            Log.d(TAG, "onBannerShown");
-                        }
-
-                        @Override
-                        public void onBannerClicked()
-                        {
-                            Log.d(TAG, "onBannerClicked");
-                        }
-                    });
-                    Appodeal.show(activity, Appodeal.BANNER_BOTTOM);
-                    break;
-            }
-        }
+//        if (checkIfShouldDisplayAds(activity))
+//        {
+//            switch (StartupManager.getInstance(activity).getAppAdsConfigs().getAdTypeEnum())
+//            {
+//                case APPODEAL:
+//                    Appodeal.onResume(activity, Appodeal.BANNER_BOTTOM);
+//                    Appodeal.setSmartBanners(true);
+//                    Appodeal.setBannerCallbacks(new BannerCallbacks()
+//                    {
+//                        @Override
+//                        public void onBannerLoaded(int i, boolean b)
+//                        {
+//                            Log.d(TAG, "onBannerLoaded");
+//                        }
+//
+//                        @Override
+//                        public void onBannerFailedToLoad()
+//                        {
+//                            Log.d(TAG, "onBannerFailedToLoad");
+//                        }
+//
+//                        @Override
+//                        public void onBannerShown()
+//                        {
+//                            Log.d(TAG, "onBannerShown");
+//                        }
+//
+//                        @Override
+//                        public void onBannerClicked()
+//                        {
+//                            Log.d(TAG, "onBannerClicked");
+//                        }
+//                    });
+//                    Appodeal.show(activity, Appodeal.BANNER_BOTTOM);
+//                    break;
+//            }
+//        }
 
     }
 

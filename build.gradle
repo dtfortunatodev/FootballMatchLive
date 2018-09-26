@@ -11,8 +11,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath 'com.google.gms:google-services:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'com.google.gms:google-services:4.0.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -21,12 +21,12 @@ buildscript {
 
 ext {
     compileSdkVersion = 'Google Inc.:Google APIs:27'
-    buildToolsVersion = '23.0.1'
+    buildToolsVersion = '28.0.2'
     minSdkVersion = 15
     targetSdkVersion = 27
     supportVersion = '26.1.0'
-    playServicesVersion = '15.0.0'
-    firebaseVersion = '15.0.0'
+    playServicesVersion = '17.3.2'
+    firebaseVersion = '17.3.2'
 }
 
 allprojects {

@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "com.dtfort.footballmatch"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 5
         versionName "1.1.0"
         multiDexEnabled true
@@ -37,7 +37,7 @@ android {
         live1016 {
             applicationId "com.footballmatch.liveapp"
             minSdkVersion 16
-            targetSdkVersion 26
+            targetSdkVersion 27
             versionCode 18
             versionName "1.2.0"
             dimension "app-type"
@@ -46,7 +46,7 @@ android {
         videohighlights {
             applicationId "com.footballmatch.videohighlights"
             minSdkVersion 16
-            targetSdkVersion 26
+            targetSdkVersion 27
             versionCode 5
             versionName "1.1.0"
             dimension "app-type"
@@ -84,23 +84,23 @@ dependencies {
     compile "com.android.support:design:${rootProject.ext.supportVersion}"
     compile "com.android.support:recyclerview-v7:${rootProject.ext.supportVersion}"
     // Firebase Dependencies
-    compile "com.google.firebase:firebase-invites:${rootProject.ext.firebaseVersion}"
-    compile "com.google.firebase:firebase-core:${rootProject.ext.firebaseVersion}"
-    compile "com.google.firebase:firebase-messaging:${rootProject.ext.firebaseVersion}"
-    compile "com.google.firebase:firebase-ads:${rootProject.ext.firebaseVersion}"
-    compile "com.google.firebase:firebase-auth:${rootProject.ext.firebaseVersion}"
-    compile "com.google.android.gms:play-services-auth:${rootProject.ext.firebaseVersion}"
-    compile 'com.firebaseui:firebase-ui-auth:3.2.2'
+    compile 'com.google.firebase:firebase-invites:16.0.3'
+    compile "com.google.firebase:firebase-core:16.0.3"
+    compile "com.google.firebase:firebase-messaging:17.3.2"
+    compile "com.google.firebase:firebase-ads:15.0.1"
+    compile "com.google.firebase:firebase-auth:16.0.3"
+    compile "com.google.android.gms:play-services-auth:15.0.1"
+    compile 'com.firebaseui:firebase-ui-auth:3.3.1'
 
-    compile 'com.google.android.gms:play-services-location:15.0.0'
-    compile 'com.google.android.gms:play-services-ads:15.0.0'
+    compile 'com.google.android.gms:play-services-location:15.0.1'
+    compile 'com.google.android.gms:play-services-ads:15.0.1'
 
-    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.okhttp3:okhttp:3.10.0'
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-    compile project(':cheetah-mobile-3.4.7')
+    //compile project(':cheetah-mobile-3.4.7')
 
 //    compile('com.mopub:mopub-sdk:4.15.0@aar') {
 //        transitive = true
