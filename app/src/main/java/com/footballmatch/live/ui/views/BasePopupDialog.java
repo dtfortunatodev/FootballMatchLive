@@ -3,6 +3,7 @@ package com.footballmatch.live.ui.views;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Spanned;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -132,6 +133,14 @@ public class BasePopupDialog extends Dialog
      * @param onPopupClickListener
      */
     public void setupPoup(String description, String textBtnLeft, String textBtnRight, OnPopupListener onPopupClickListener)
+    {
+        getTvBtnLeft().setText(textBtnLeft);
+        getTvBtnRight().setText(textBtnRight);
+        getTvDescription().setText(description);
+        setOnPopupClickListener(onPopupClickListener);
+    }
+
+    public void setupPoup(Spanned description, String textBtnLeft, String textBtnRight, OnPopupListener onPopupClickListener)
     {
         getTvBtnLeft().setText(textBtnLeft);
         getTvBtnRight().setText(textBtnRight);

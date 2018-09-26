@@ -9,18 +9,26 @@
         android:layout_height="wrap_content"
         android:minHeight="140dp">
 
-        <TextView
-            android:id="@+id/tvPopupDescription"
-            android:layout_width="wrap_content"
+        <ScrollView
+            android:id="@+id/tvPopupDescriptionContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="30dp"
-            android:layout_marginTop="30dp"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentLeft="true"
-            android:gravity="left"
-            />
+            android:layout_above="@+id/layoutPopupBaseButtonsContainer">
+
+            <TextView
+                android:id="@+id/tvPopupDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#FFFFFF"
+                android:layout_alignParentLeft="true"
+                android:gravity="left"
+                />
+
+        </ScrollView>
 
         <LinearLayout
             android:id="@+id/layoutPopupBaseButtonsContainer"
@@ -29,8 +37,7 @@
             android:orientation="horizontal"
             android:layout_alignParentRight="true"
             android:layout_alignWithParentIfMissing="false"
-            android:layout_alignParentBottom="false"
-            android:layout_below="@+id/tvPopupDescription">
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:id="@+id/tvPopupBaseButtonLeft"

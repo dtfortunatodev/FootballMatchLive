@@ -1,5 +1,6 @@
 package com.footballmatch.live.data.requests;
 
+import android.util.Log;
 import com.footballmatch.live.data.managers.HTMLRequestManager;
 import com.footballmatch.live.data.model.StreamLinkEntity;
 import com.footballmatch.live.utils.LogUtil;
@@ -44,35 +45,39 @@ public class StreamsMatchListRequest
      *
      * @return ResponseDataObject with a list of StreamLinkEntities
      */
-    public static ResponseDataObject<StreamLinkEntity> getListMatchStreams(String url)
+    public static ResponseDataObject<StreamLinkEntity> getListMatchStreams(String url, Document document)
     {
         ResponseDataObject<StreamLinkEntity> responseDataObject = new ResponseDataObject();
 
-        // Load Document
-        Document document = null;
-
-        try
+        if (document == null)
         {
-            document = HTMLRequestManager.getData(url);
+            try
+            {
+                document = HTMLRequestManager.getData(url);
 
-            // Set Response Code
-            if (document != null && document.hasText())
-            {
-                // Response OK
-                responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_OK);
+                // Set Response Code
+                if (document != null && document.hasText())
+                {
+                    // Response OK
+                    responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_OK);
+                }
+                else
+                {
+                    // Response Failed
+                    responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
+                }
             }
-            else
+            catch (IOException e)
             {
-                // Response Failed
+                LogUtil.e(TAG, e.getMessage(), e);
+
+                // Response Falied
                 responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
             }
         }
-        catch (IOException e)
+        else
         {
-            LogUtil.e(TAG, e.getMessage(), e);
-
-            // Response Falied
-            responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_FAILED_GETTING_DOCUMENT);
+            responseDataObject.setResponseCode(ResponseDataObject.RESPONSE_CODE_OK);
         }
 
         // Parse Data
@@ -148,10 +153,46 @@ public class StreamsMatchListRequest
 
             case LIVESPORTWS:
                 // TODO Parse to use LIVESPOTWS
+                String selectStreams = "ul.broadcasting-types li table tbody tr";
+                Elements streamsElements = document.select(selectStreams);
+
+                if (streamsElements != null && !streamsElements.isEmpty())
+                {
+                    for (Element element : streamsElements)
+                    {
+                        StreamLinkEntity streamLinkEntity = new StreamLinkEntity();
+
+                        // Set Link
+                        final String selectLink = "td.btn-holder a";
+                        Elements selectLinkElement = element.select(selectLink);
+                        streamLinkEntity.setStreamLinkUrl(selectLinkElement.attr("href"));
+
+                        // Set Lang icon
+                        final String selectLang = "td.country img";
+                        Elements selectLangElement = element.select(selectLang);
+                        streamLinkEntity.setLangIcon(selectLangElement.attr("src"));
+                        streamLinkEntity.setTitle(selectLangElement.attr("title"));
+
+                        // Set Channel name (if exists)
+                        final String selectChannel = "td.channel";
+                        Elements selectChannelElement = element.select(selectChannel);
+                        if (selectChannelElement != null)
+                        {
+                            streamLinkEntity.setTitle(selectChannelElement.text());
+                        }
+
+                        if (streamLinkEntity.getStreamLinkType() == StreamLinkEntity.StreamLinkType.ACESTREAM)
+                        {
+                            streamLinkEntity.setRecommended(true);
+                        }
+
+                        listStreams.add(streamLinkEntity);
+                    }
+                }
+
+                Log.d("TEST", "Test");
                 break;
         }
-
-
 
         // Sort List
         Collections.sort(listStreams, STREAM_LIST_SORT);

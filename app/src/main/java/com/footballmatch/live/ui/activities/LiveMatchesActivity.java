@@ -11,6 +11,7 @@ import com.footballmatch.live.data.managers.NotificationsManager;
 import com.footballmatch.live.data.managers.StartupManager;
 import com.footballmatch.live.data.model.settings.AppConfigs;
 import com.footballmatch.live.ui.fragments.LiveMatchesFragment;
+import com.footballmatch.live.ui.views.PrivacyPolicyDialog;
 import com.footballmatch.live.ui.views.StartupMessageDialog;
 import com.footballmatch.live.utils.Utils;
 import com.google.android.gms.common.ConnectionResult;
@@ -45,6 +46,8 @@ public class LiveMatchesActivity extends BaseNavigationActivity implements Googl
 
         // Try to displau startup message
         StartupMessageDialog.startDialog(this);
+
+        PrivacyPolicyDialog.showDialog(this);
     }
 
 

@@ -54,12 +54,14 @@ public class PlayStreamManager
                 break;
 
             case WEBPLAYER:
-                if (validateAppInstalled(context, R.string.popup_stream_webplayer_install_app, appConfigs.getWebplayerStreamAppPackage(),
-                                         appConfigs.getWebplayerStreamAppUrl(), true))
-                {
-                    // Initialize Acestream
-                    Utils.startURL(context, streamLinkEntity.getStreamLinkUrl());
-                }
+                // Initialize Stream
+                Utils.startURL(context, streamLinkEntity.getStreamLinkUrl());
+//                if (validateAppInstalled(context, R.string.popup_stream_webplayer_install_app, appConfigs.getWebplayerStreamAppPackage(),
+//                                         appConfigs.getWebplayerStreamAppUrl(), true))
+//                {
+//                    // Initialize Acestream
+//                    Utils.startURL(context, streamLinkEntity.getStreamLinkUrl());
+//                }
                 ProgressController.stopDialog();
                 break;
 

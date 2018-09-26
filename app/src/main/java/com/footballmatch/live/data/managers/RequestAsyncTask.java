@@ -7,7 +7,10 @@ import com.footballmatch.live.data.requests.LiveMatchRequest;
 import com.footballmatch.live.data.requests.MatchHighlightRequest;
 import com.footballmatch.live.data.requests.ResponseDataObject;
 import com.footballmatch.live.data.requests.StreamsMatchListRequest;
+import com.footballmatch.live.data.requests.Urls;
 import com.footballmatch.live.ui.views.WebViewExtractor;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 /**
  * Created by David Fortunato on 27/05/2016
@@ -46,6 +49,13 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
                 webView = new WebViewExtractor(this.context);
                 webView.loadUrl(this.requestUrl);
                 break;
+            case REQUEST_LIST_STREAMS:
+                if (Urls.SOURCE_TYPE == Urls.SOURCE_TYPE.LIVESPORTWS)
+                {
+                    webView = new WebViewExtractor(this.context);
+                    webView.loadUrl(this.requestUrl);
+                }
+                break;
         }
 
     }
@@ -58,7 +68,30 @@ public class RequestAsyncTask<T> extends AsyncTask<Void, ResponseDataObject<T>, 
             case REQUEST_LIVE_MATCHES:
                 return (ResponseDataObject<T>) LiveMatchRequest.getListLiveMatches();
             case REQUEST_LIST_STREAMS:
-                return (ResponseDataObject<T>) StreamsMatchListRequest.getListMatchStreams(requestUrl);
+                Document document = null;
+                if (Urls.SOURCE_TYPE == Urls.SOURCE_TYPE.LIVESPORTWS)
+                {
+                    String html = null;
+                    try
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            Thread.sleep(1000);
+                            html = this.webView.getHtml();
+                            if(html != null && html.contains("broadcasting-types"))
+                            {
+                                // It is ready
+                                break;
+                            }
+                        }
+                        document = Jsoup.parse(html);
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+                return (ResponseDataObject<T>) StreamsMatchListRequest.getListMatchStreams(requestUrl, document);
             case REQUEST_ARENAVISION_LINK:
                 String html = null;
                 try

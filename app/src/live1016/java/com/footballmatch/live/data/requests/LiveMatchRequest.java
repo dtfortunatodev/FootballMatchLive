@@ -178,7 +178,7 @@ public class LiveMatchRequest
         final String SELECT_DATE_CONTAINER = "span.date i";
         final String SELECT_TEAM_HOME = "div.commands.commands_match_center img.l";
         final String SELECT_TEAM_AWAY = "div.commands.commands_match_center img.r";
-        final String SELECT_MATCH_LINK = "a [itemprop=url]";
+        final String SELECT_MATCH_LINK = "a";
 
         // Init Match Entity
         MatchEntity matchEntity = new MatchEntity();
@@ -264,7 +264,7 @@ public class LiveMatchRequest
         elements = element.select(SELECT_MATCH_LINK);
         if(DataUtils.isElementsValid(elements))
         {
-            matchEntity.setLinkUrl(elements.attr("href"));
+            matchEntity.setLinkUrl("https://livesport.ws" + elements.attr("href"));
         }
 
         return matchEntity;

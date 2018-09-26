@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.footballmatch.live.R;
 import com.footballmatch.live.data.managers.PlayStreamManager;
 import com.footballmatch.live.data.model.StreamLinkEntity;
+import com.footballmatch.live.data.requests.ImageLoaderHelper;
 import com.footballmatch.live.managers.ads.AdsManager;
 import com.footballmatch.live.ui.adapters.BaseRecyclerViewAdapter;
 import com.footballmatch.live.ui.viewholders.BaseRecyclerViewHolder;
@@ -43,29 +44,42 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
         // Setup Text
         if (streamName == null)
         {
-            streamName = "";
-            switch (getObjectData().getStreamLinkType())
+            if (getObjectData().getTitle() != null && !getObjectData().getTitle().isEmpty())
             {
-                case WEBPLAYER:
-                    streamName = "Webplayer " + (position + 1);
-                    break;
-                case ACESTREAM:
-                    streamName = "Acestream " + (position + 1);
-                    break;
-                case ARENAVISION:
-                    streamName = "AV " + (position + 1);
-                    break;
-                case SOPCAST:
-                    streamName = "SopCast " + (position + 1);
-                    break;
+                streamName = getObjectData().getTitle();
             }
+            else
+            {
+                streamName = "";
+                switch (getObjectData().getStreamLinkType())
+                {
+                    case WEBPLAYER:
+                        streamName = "Webplayer " + (position + 1);
+                        break;
+                    case ACESTREAM:
+                        streamName = "Acestream " + (position + 1);
+                        break;
+                    case ARENAVISION:
+                        streamName = "AV " + (position + 1);
+                        break;
+                    case SOPCAST:
+                        streamName = "SopCast " + (position + 1);
+                        break;
+                }
 
-            // Set Recommended
-            streamName += " " + (getObjectData().isRecommended() ? recyclerViewHolder.getContext().getString(R.string.list_stream_indicator_recommended) : "");
+                // Set Recommended
+                streamName += " " + (getObjectData().isRecommended() ? recyclerViewHolder.getContext().getString(R.string.list_stream_indicator_recommended) : "");
+            }
         }
+
         recyclerViewHolder.tvStreamName.setText(streamName);
 
         // Setup Icon
+        if (getObjectData().getLangIcon() != null)
+        {
+            ImageLoaderHelper.loadImage(getObjectData().getLangIcon(), recyclerViewHolder.ivArrowImageView, R.drawable.ic_play_icon);
+        }
+
         final String streamName = "";
         switch (getObjectData().getStreamLinkType())
         {
@@ -146,6 +160,7 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
 
     protected class ListStreamIeamViewHolder extends BaseRecyclerViewHolder<View>
     {
+        public ImageView ivArrowImageView;
         public ImageView ivIcon;
         public TextView tvStreamName;
 
@@ -154,6 +169,7 @@ public class ListStreamItemIndicator extends BaseRecyclerViewIndicator<View, Str
             super(itemView);
             ivIcon = (ImageView) itemView.findViewById(R.id.ivListStreamItemIcon);
             tvStreamName = (TextView) itemView.findViewById(R.id.tvListStreamItemName);
+            ivArrowImageView = itemView.findViewById(R.id.ivListStreamItemPlayIcon);
         }
     }
 

@@ -8,6 +8,8 @@ public class StreamLinkEntity extends BaseEntity
 {
     private String streamLinkUrl;
     private StreamLinkType streamLinkType;
+    private String title;
+    private String langIcon;
     private boolean isRecommended;
 
     public StreamLinkEntity()
@@ -75,6 +77,26 @@ public class StreamLinkEntity extends BaseEntity
     public void setRecommended(boolean recommended)
     {
         isRecommended = recommended;
+    }
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public String getLangIcon()
+    {
+        return langIcon;
+    }
+
+    public void setLangIcon(String langIcon)
+    {
+        this.langIcon = langIcon;
     }
 
     /**
